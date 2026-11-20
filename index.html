@@ -130,7 +130,7 @@ navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(fun
 function editP(id){var p=P(id);modal('<h3>পণ্য সম্পাদনা</h3><label>নাম</label><input id="en1" value="'+esc(p.name)+'"><label>ক্যাটাগরি</label><input id="ec1" value="'+esc(p.cat)+'"><label>ক্রয়মূল্য</label><input id="eb1" type="number" inputmode="numeric" value="'+p.buy+'"><label>বিক্রয়মূল্য</label><input id="es1" type="number" inputmode="numeric" value="'+p.sell+'"><label>বারকোড</label><input id="ek1" value="'+esc(p.barcode||'')+'"><div style="display:flex;gap:8px;margin-top:14px"><button class="btn o" style="color:var(--red)" onclick="delP('+id+')">মুছুন</button><button class="btn" style="flex:1" onclick="saveEP('+id+')">সংরক্ষণ</button></div>')}
 function saveEP(id){var p=P(id),n=val('en1').trim(),s=+val('es1');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}p.name=n;p.cat=val('ec1')||'অন্যান্য';p.buy=+val('eb1')||0;p.sell=s;p.barcode=val('ek1').trim();save();modal(0);toast('সংরক্ষিত ✓');render()}
 function delP(id){if(confirm('পণ্যটি মুছবেন? আগের বিক্রির হিসাব থাকবে।')){S.products=S.products.filter(function(p){return p.id!=id});delete cart[id];save();modal(0);render()}}
-var VER='v7',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
+var VER='v8',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
 function lineT(id){var p=P(id),r=cr[id]!=null?cr[id]:p.sell;return r*(1-(cd[id]||0)/100)*cart[id]}
 function ctotal(){return Object.keys(cart).reduce(function(x,id){return x+lineT(id)},0)}
 function netT(){return Math.max(0,ctotal()-(+cdisc||0))}
@@ -211,17 +211,6 @@ function pg(L){return L.map(function(p){return '<button class="p'+(cart[p.id]?' 
 function pl(){document.getElementById('pg').innerHTML=pg(S.products.filter(function(p){return (cat=='সব'||p.cat==cat)&&(p.name.indexOf(q)>-1||(p.barcode||'').indexOf(q)>-1)}))}
 function P(id){return S.products.filter(function(p){return p.id==id})[0]}
 function add(id){var p=P(id);if(!p.stock){toast('স্টক নেই');return}if((cart[id]||0)>=p.stock){toast('স্টকের বেশি নেওয়া যাবে না');return}cart[id]=(cart[id]||0)+1;bar();if(view=='pos'&&document.getElementById('pg'))pl()}
-function ctotal(){return Object.keys(cart).reduce(function(x,id){return x+P(id).sell*cart[id]},0)}
-function bar(){var n=Object.keys(cart).length,b=document.getElementById('bar');b.innerHTML=(view=='pos')?'<div class="bar"><b style="background:var(--bg);border-radius:14px;padding:10px 14px">'+money(ctotal())+'</b><button class="btn" style="background:linear-gradient(135deg,#ff9500,#f55f00)" onclick="scan()">📷 স্ক্যান</button><button class="btn g2" onclick="cartM()">🛒 কার্ট'+(n?' ('+bn(n)+')':'')+'</button></div>':''}
-function cartM(){var ids=Object.keys(cart);if(!ids.length){toast('কার্ট খালি');return}
-modal('<h3>কার্ট</h3>'+ids.map(function(id){var p=P(id);return '<div class="row"><span>'+esc(p.name)+'<small style="color:var(--mut);display:block">'+money(p.sell)+' × '+bn(cart[id])+'</small></span><span><button class="btn o" onclick="qty('+id+',-1)">−</button> <button class="btn o" onclick="qty('+id+',1)">+</button></span></div>'}).join('')+
-'<div class="row"><b>মোট</b><b class="G">'+money(ctotal())+'</b></div><label>কাস্টমার (বাকির জন্য)</label><select id="cu"><option value="0">ক্যাশ কাস্টমার</option>'+S.customers.map(function(c){return '<option value="'+c.id+'">'+esc(c.name)+'</option>'}).join('')+'</select><label>পরিশোধ (৳)</label><input id="pd" type="number" inputmode="numeric" value="'+ctotal()+'"><div style="display:flex;gap:8px;margin-top:14px"><button class="btn o" onclick="cart={};modal(0);render()">খালি করুন</button><button class="btn g2" style="flex:1" onclick="sell()">বিক্রি সম্পন্ন করুন</button></div>')}
-function qty(id,d){var p=P(id),n=(cart[id]||0)+d;if(n>p.stock){toast('স্টক শেষ');return}if(n<=0)delete cart[id];else cart[id]=n;bar();if(view=='pos'&&document.getElementById('pg'))pl();Object.keys(cart).length?cartM():modal(0)}
-function sell(){var ids=Object.keys(cart),tot=ctotal(),pd=Math.min(Math.max(+val('pd')||0,0),tot),cu=+val('cu');
-if(pd<tot&&S.noCredit){toast('বাকিতে বিক্রি বন্ধ আছে');return}if(pd<tot&&!cu){toast('বাকি দিতে কাস্টমার বাছাই করুন');return}
-S.sales.push({id:S.nid++,t:Date.now(),total:tot,paid:pd,cu:cu,items:ids.map(function(id){var p=P(id);p.stock-=cart[id];return {n:p.name,q:cart[id],p:p.sell,c:p.buy}})});
-if(cu&&tot>pd){var cc=CU(cu);cc.due+=tot-pd;cc.last=Date.now()}
-cart={};save();modal(0);toast('বিক্রি সম্পন্ন ✓');render()}
 var iso=function(t){var d=new Date(t);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 function inR(t,f){if(f=='all')return true;if(f=='today')return ymd(t)==ymd(Date.now());return Date.now()-t<=(+f)*864e5}
 function lvl(d){return d>=5000?['High','']:d>=1000?['Medium','w']:['Low','w']}
