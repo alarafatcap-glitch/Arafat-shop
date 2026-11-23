@@ -491,5 +491,156 @@ S=load();save();render();lock();chkUpd();
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(function(){});
 </script>
+<style id="pv21">
+#lblp{display:none}
+.pv-hd{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 10%,var(--card)),color-mix(in srgb,var(--ac2) 8%,var(--card)));border:1px solid var(--bd);border-radius:28px;padding:18px;box-shadow:0 8px 24px #5b3df51a}
+.pv-t{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.pv-t h2{margin:0;border:0;padding:0;font-size:26px;font-weight:700;display:flex;align-items:center;gap:10px;color:var(--tx)}
+.pv-t h2 svg{color:#2f6bff}
+.pv-pill{border:1px solid var(--bd);background:var(--card);border-radius:99px;padding:8px 14px;font-family:inherit;font-size:14px;font-weight:600;color:var(--pri);display:flex;gap:6px;align-items:center;cursor:pointer}
+.pv-add{width:100%;margin-top:14px;border:0;border-radius:20px;padding:16px;background:linear-gradient(90deg,#2563ff,#7a2cf5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 24px #5b3df566;cursor:pointer}
+.pv-add i{width:42px;height:42px;border-radius:13px;background:#ffffff33;display:flex;align-items:center;justify-content:center}
+.pv-box{margin-top:16px;background:color-mix(in srgb,var(--card) 90%,transparent);border:1px solid var(--bd);border-radius:28px;padding:16px}
+.pv-s{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);background:var(--card);border-radius:18px;padding:0 14px;box-shadow:0 2px 8px #0000000d}
+.pv-s input{border:0;margin:0;background:none;padding:14px 0;outline:0}
+.pv-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pv-g select,.pv-g button{margin:0;border-radius:18px;padding:14px;font-size:16px;font-weight:500;box-shadow:0 2px 8px #0000000d}
+.pv-g button{border:1px solid var(--bd);background:var(--card);color:var(--tx);font-family:inherit;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.pv-g button.on{background:color-mix(in srgb,var(--red) 12%,var(--card));color:var(--red)}
+.pv-tot{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 10%,var(--card));border-radius:18px;display:flex;align-items:center;justify-content:center;gap:8px;color:#2563eb;font-size:15px}
+.pv-tot b{font-size:20px;color:#1d4ed8}
+.pv-sa{display:flex;align-items:center;gap:14px;padding:14px 4px;margin-top:14px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);font-weight:700;font-size:18px;cursor:pointer}
+.pv-ck{width:34px;height:34px;border-radius:50%;border:3px solid var(--bd);flex:none;background:var(--card);display:flex;align-items:center;justify-content:center;color:#fff}
+.pv-ck.on{background:#2f6bff;border-color:#2f6bff}
+.pv-c{margin-top:16px;background:var(--card);border:1px solid var(--bd);border-radius:28px;padding:16px;box-shadow:0 6px 18px #0000000f}
+.pv-c.off{opacity:.65}
+.pv-h{display:flex;align-items:center;gap:12px}
+.pv-h b{font-size:21px;flex:1;line-height:1.25}
+.pv-stp{background:#fdf0bf;color:#b45309;border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.pv-stp.ok{background:#d9f7e8;color:#067a53}.pv-stp.z{background:#fde0e4;color:#c9243b}
+.pv-tg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pv-tg span,.pv-tg button{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 9%,var(--card));color:#2457d6;border-radius:99px;padding:6px 14px;font-family:inherit;font-size:14px;display:flex;align-items:center;gap:6px}
+.pv-tg span.b{background:color-mix(in srgb,#8b5cf6 12%,var(--card));color:#5b3df5}
+.pv-tg button{background:var(--card);color:var(--tx);font-weight:600;cursor:pointer}
+.pv-pr{display:grid;grid-template-columns:1fr 1fr;margin-top:16px;border:1px solid var(--bd);background:var(--bg);border-radius:20px;padding:16px}
+.pv-pr div+div{border-left:1px solid var(--bd);padding-left:18px}
+.pv-pr small{color:var(--mut);font-size:15px}.pv-pr b{display:block;font-size:26px;margin-top:4px}
+.pv-bar{display:flex;justify-content:space-between;margin-top:18px;color:var(--mut);font-size:15px}
+.pv-bar+div{height:10px;border-radius:9px;background:var(--bd);margin-top:8px;overflow:hidden}.pv-bar+div i{display:block;height:100%;border-radius:9px;background:#f59e0b}
+.pv-act{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
+.pv-act button{border:1px solid var(--bd);background:var(--bg);border-radius:18px;padding:14px 4px;font-family:inherit;font-weight:700;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mut);cursor:pointer}
+.pv-act .g{background:color-mix(in srgb,var(--grn) 12%,var(--card));color:var(--grn);border-color:color-mix(in srgb,var(--grn) 30%,var(--bd))}
+.pv-act .e{background:color-mix(in srgb,#3b82f6 10%,var(--card));color:#2563eb;border-color:color-mix(in srgb,#3b82f6 30%,var(--bd))}
+.lbo{position:fixed;inset:0;z-index:40;background:#3a3f5a88;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:14px}
+.lbm{width:100%;max-width:460px;max-height:94%;display:flex;flex-direction:column;background:color-mix(in srgb,var(--card) 88%,#c9c3f5);border:1px solid #fff6;border-radius:30px;padding:22px 20px 18px;box-shadow:0 24px 60px #0005}
+.lbm h3{margin:0;font-size:23px}
+.lbx{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--bd)}
+.lbx button{border:0;background:none;color:var(--tx);cursor:pointer}
+.lbb{overflow:auto;flex:1;padding:14px 4px 6px}
+.lbr{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;font-weight:600;margin:6px 0}
+.lbv{background:var(--bg);border-radius:22px;padding:14px;display:flex;justify-content:center}
+.lbp{background:#fff;color:#000;border-radius:16px;box-shadow:0 4px 14px #0002;overflow:hidden}
+.lbn{color:var(--mut);font-size:13px;text-align:center;margin:10px 0}
+.lbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.lbs button,.lbd button{border:2px solid transparent;background:color-mix(in srgb,var(--bd) 60%,var(--card));border-radius:18px;padding:14px 2px;font-family:inherit;font-weight:700;font-size:15px;color:var(--tx);cursor:pointer}
+.lbs button.on,.lbd button.on{border-color:#2f7bff;color:#2f5be0;background:color-mix(in srgb,#3b82f6 10%,var(--card))}
+.lbs .w{grid-column:span 2}
+.lbc{display:flex;align-items:center;gap:8px;margin-top:10px}
+.lbc input{margin:0;text-align:center;border-radius:20px;padding:12px 4px;width:78px}
+.lbd{display:flex;align-items:center;gap:10px;margin-top:12px}.lbd button{padding:14px 20px}
+.lbt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+.lbt b{display:block;font-size:15px}.lbt small{color:var(--mut)}
+.lbg{width:60px;height:34px;border-radius:99px;background:#cfd6e4;position:relative;border:0;flex:none;cursor:pointer}
+.lbg:after{content:"";position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.2s}
+.lbg.on{background:#2f7bff}.lbg.on:after{left:30px}
+.lbq{display:flex;align-items:center;gap:8px;margin-top:6px}
+.lbq button{width:46px;height:46px;border-radius:50%;border:1px solid var(--bd);background:var(--card);font-size:22px;color:var(--tx);cursor:pointer}
+.lbq input{margin:0;width:100px;text-align:center;font-size:22px;font-weight:700;border-radius:20px}
+.lbgo{margin-top:12px;border:0;border-radius:20px;padding:17px;background:linear-gradient(90deg,#2f7bff,#5b3df5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 24px #3b5bf566;cursor:pointer}
+@media print{body.lp>*:not(#lblp){display:none!important}body.lp #lblp{display:block}body.lp,html{background:#fff!important;padding:0!important}}
+</style>
+<script>
+(function(){
+var SV=function(p,z){return '<svg width="'+(z||22)+'" height="'+(z||22)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'};
+var I={search:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',plus:'<path d="M12 5v14M5 12h14"/>',pc:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',eo:'<path d="M3 3l18 18"/><path d="M10.6 6.1A10 10 0 0 1 12 6c6 0 9.5 6 9.5 6a16 16 0 0 1-3 3.6M6.6 6.7A16 16 0 0 0 2.5 12S6 18 12 18a9.7 9.7 0 0 0 4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',ed:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',pr:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="9" rx="2"/><path d="M6 14h12v7H6z"/>',hi:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/>',tg:'<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.2"/>',bx:'<path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/>',ls:'<path d="M4 5h4v4H4zM4 15h4v4H4zM12 7h8M12 17h8"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',ck:'<path d="m5 12 5 5 9-10"/>'};
+var ic=function(n,z){return SV(I[n],z)};
+var pq='',pcat='',pbr='',pin=false,sel={};
+window.sku=function(p){if(p.barcode)return String(p.barcode);var h=0,s=p.id+':'+p.name;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return 'PRD'+('000000'+h.toString(36)).slice(-6).toUpperCase()};
+/* Code128-B */
+var C=('212222 222122 222221 121223 121322 131222 122213 122312 132212 221213 221312 231212 112232 122132 122231 113222 123122 123221 223211 221132 221231 213212 223112 312131 311222 321122 321221 312212 322112 322211 212123 212321 232121 111323 131123 131321 112313 132113 132311 211313 231113 231311 112133 112331 132131 113123 113321 133121 313121 211331 231131 213113 213311 213131 311123 311321 331121 312113 312311 332111 314111 221411 431111 111224 111422 121124 121421 141122 141221 112214 112412 122114 122411 142112 142211 241211 221114 413111 241112 134111 111242 121142 121241 114212 124112 124211 411212 421112 421211 212141 214121 412121 111143 111341 131141 114113 114311 411113 411311 113141 114131 311141 411131 211412 211214 211232 2331112').split(' ');
+function c128(t){var v=[104],s=104;for(var i=0;i<t.length;i++){var c=t.charCodeAt(i)-32;if(c<0||c>95)c=0;v.push(c);s+=c*(i+1)}v.push(s%103,106);var m=[];v.forEach(function(x){C[x].split('').forEach(function(w,j){m.push([j%2==0,+w])})});return m}
+function bars(t,mw,dpi,thin,H){var m=c128(t),N=m.reduce(function(a,b){return a+b[1]},0);var x=0,r='',sh=thin?.3:0;m.forEach(function(b){if(b[0])r+='<rect x="'+x+'" y="0" width="'+(b[1]-sh)+'" height="1" />';x+=b[1]});
+var dots=Math.max(1,Math.floor(mw/25.4*dpi/N)),wmm=dots*N/dpi*25.4;return {svg:'<svg viewBox="0 0 '+N+' 1" preserveAspectRatio="none" shape-rendering="crispEdges" style="width:100%;height:100%;display:block" fill="#000">'+r+'</svg>',w:wmm,N:N}}
+var SZ=['58x40','50x30','40x30','38x25','35x25','30x20','A4'];
+function L(){return S.lbl=S.lbl||{size:'38x25',dpi:203,thin:false,price:true}}
+function dim(){var s=L().size;if(s=='A4')return [38,25];var a=s.split('x');return [+a[0],+a[1]]}
+function lblHTML(p,k,u){var d=dim(),W=d[0],H=d[1],o=L(),pad=1.6,u=u||'px';var f=function(x){return (x*k)+u};
+var iw=W-2*pad,b=bars(sku(p),iw,o.dpi,o.thin);
+return '<div class="lbp" style="width:'+f(W)+';height:'+f(H)+';padding:'+f(pad)+';display:flex;flex-direction:column;font-family:\'Hind Siliguri\',sans-serif;box-sizing:border-box;border-radius:'+(u=='px'?'14px':'0')+';box-shadow:'+(u=='px'?'':'none')+'">'
++'<div style="text-align:center;font-size:'+f(Math.max(2,H*.09))+';line-height:1.15;white-space:nowrap;overflow:hidden">'+esc(S.shop||'')+'</div>'
++'<div style="text-align:center;font-weight:700;font-size:'+f(Math.max(2.6,H*.12))+';line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(p.name)+'</div>'
++'<div style="flex:1;min-height:0;margin:'+f(.6)+' auto;width:'+f(b.w)+'">'+b.svg+'</div>'
++'<div style="display:flex;justify-content:space-between;align-items:baseline;font-size:'+f(Math.max(2,H*.09))+';line-height:1"><span style="font-family:monospace">'+esc(sku(p))+'</span>'+(o.price?'<b style="font-size:'+f(Math.max(2.6,H*.13))+'">৳'+p.sell+'</b>':'')+'</div></div>'}
+var lp=null,lc=10;
+window.lbl=function(id){lp=P(id);lc=lc||10;lbR()};
+window.lbClose=function(){var e=document.getElementById('lbo');if(e)e.remove()};
+function lbR(){lbClose();var d=dim(),o=L(),k=Math.min((Math.min(330,innerWidth-110))/d[0],210/d[1]);
+var ch=SZ.map(function(s){return '<button class="'+(o.size==s?'on ':'')+(s=='A4'?'w':'')+'" onclick="lbSet(\''+s+'\')">'+(s=='A4'?'A4 স্টিকার শিট':bn(s.replace('x',' × ')))+'</button>'}).join('');
+var h='<div class="lbo" id="lbo"><div class="lbm"><div class="lbx"><h3>বারকোড লেবেল প্রিন্ট</h3><button onclick="lbClose()">'+ic('x',28)+'</button></div><div class="lbb">'
++'<div class="lbr"><span>লেবেল প্রিভিউ</span><span>'+bn(d[0]+' × '+d[1])+' মিমি</span></div><div class="lbv">'+lblHTML(lp,k)+'</div>'
++(lp.barcode?'':'<div class="lbn">পণ্যের নিজস্ব বারকোড নেই — অটো-জেনারেটেড SKU ব্যবহার হচ্ছে (POS-এ স্ক্যান করলেই পণ্য পাওয়া যাবে)</div>')
++'<div class="lbr" style="margin-top:14px"><span>লেবেলের মাপ</span><span style="font-weight:400">রোলের গায়ে যা লেখা আছে</span></div><div class="lbs">'+ch+'</div>'
++'<div class="lbc"><b style="color:var(--mut)">অন্য মাপ</b><input id="lw" type="number" value="'+d[0]+'"><span>×</span><input id="lh" type="number" value="'+d[1]+'"><span style="color:var(--mut)">মিমি</span><button class="btn o" style="margin-left:auto;border-radius:18px" onclick="lbCu()">বসান</button></div>'
++'<div class="lbd"><b style="color:var(--mut)">প্রিন্টার</b><button class="'+(o.dpi==203?'on':'')+'" onclick="lbD(203)">'+bn(203)+' dpi</button><button class="'+(o.dpi==300?'on':'')+'" onclick="lbD(300)">'+bn(300)+' dpi</button><small style="color:var(--mut);margin-left:auto">না জানলে '+bn(203)+'</small></div>'
++'<div class="lbt"><span><b>বার সরু করে ছাপান</b><small>ছাপা ছড়িয়ে বার জোড়া লাগলে চালু করুন</small></span><button class="lbg '+(o.thin?'on':'')+'" onclick="lbT(\'thin\')"></button></div>'
++'<div class="lbt" style="align-items:flex-end"><span><b>কত কপি?</b><div class="lbq"><button onclick="lbQ(-1)">−</button><input id="lq" type="number" value="'+lc+'" oninput="lbQi(this.value)"><button onclick="lbQ(1)">+</button></div></span><span style="text-align:right"><b>দাম দেখান</b><button class="lbg '+(o.price?'on':'')+'" style="margin-top:10px" onclick="lbT(\'price\')"></button></span></div>'
++'</div><button class="lbgo" onclick="lbPrint()">'+ic('pr',24)+'<span id="lbn">'+bn(lc)+'টি লেবেল প্রিন্ট করুন</span></button></div></div>';
+document.body.insertAdjacentHTML('beforeend',h)}
+window.lbSet=function(s){L().size=s;save();lbR()};
+window.lbCu=function(){var w=+val('lw'),h=+val('lh');if(!(w>=10&&h>=10&&w<=300&&h<=300)){toast('সঠিক মাপ দিন');return}L().size=w+'x'+h;save();lbR()};
+window.lbD=function(x){L().dpi=x;save();lbR()};
+window.lbT=function(k){L()[k]=!L()[k];save();lbR()};
+window.lbQ=function(d){lc=Math.max(1,Math.min(500,lc+d));lbQu()};
+window.lbQi=function(v){lc=Math.max(1,Math.min(500,Math.floor(+v)||1));var n=document.getElementById('lbn');n.textContent=bn(lc)+'টি লেবেল প্রিন্ট করুন'};
+function lbQu(){document.getElementById('lq').value=lc;lbQi(lc)}
+window.lbPrint=function(){var d=dim(),a4=L().size=='A4',h='';
+for(var i=0;i<lc;i++)h+=(a4?'<div style="display:inline-block;margin:1mm">':'<div style="page-break-after:always;break-after:page">')+lblHTML(lp,1,'mm')+'</div>';
+var el=document.getElementById('lblp');if(!el){el=document.createElement('div');el.id='lblp';document.body.appendChild(el)}
+el.innerHTML=h;var st=document.getElementById('lbpg')||document.head.appendChild(Object.assign(document.createElement('style'),{id:'lbpg'}));
+st.textContent='@page{size:'+(a4?'A4':d[0]+'mm '+d[1]+'mm')+';margin:'+(a4?'8mm':'0')+'}';
+document.body.classList.add('lp');var done=function(){document.body.classList.remove('lp');window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);setTimeout(function(){window.print()},120)};
+/* product page */
+function flt(){return S.products.filter(function(p){return (!!p.off)==pin&&(!pcat||p.cat==pcat)&&(!pbr||p.brand==pbr)&&(!pq||(p.name+' '+sku(p)).toLowerCase().indexOf(pq.toLowerCase())>=0)})}
+function uniq(k){var r=[];S.products.forEach(function(p){if(p[k]&&r.indexOf(p[k])<0)r.push(p[k])});return r}
+function opts(a,v,all){return '<option value="">'+all+'</option>'+a.map(function(x){return '<option'+(x==v?' selected':'')+'>'+esc(x)+'</option>'}).join('')}
+function card(p){var z=p.stock<=0,lo=!z&&p.stock<=LM();return '<div class="pv-c'+(p.off?' off':'')+'"><div class="pv-h"><div class="pv-ck'+(sel[p.id]?' on':'')+'" onclick="pvSel('+p.id+')">'+(sel[p.id]?ic('ck',20):'')+'</div><b>'+esc(p.name)+'</b><span class="pv-stp'+(z?' z':lo?'':' ok')+'">স্টক: '+bn(p.stock)+' পিস</span></div>'
++'<div class="pv-tg"><span>'+esc(p.cat||'অন্যান্য')+'</span>'+(p.brand?'<span class="b">'+esc(p.brand)+'</span>':'')+'<button onclick="lbl('+p.id+')">'+ic('pr',18)+' লেবেল</button><button onclick="pvHist('+p.id+')">'+ic('hi',18)+' স্টকের হিসাব</button></div>'
++'<div class="pv-pr"><div><small>ক্রয়মূল্য</small><b>৳ '+bn(p.buy)+'</b></div><div><small>বিক্রয়মূল্য</small><b style="color:#2563eb">৳ '+bn(p.sell)+'</b></div></div>'
++'<div class="pv-bar"><span>স্টক স্ট্যাটাস</span><span>'+(z?'স্টক শেষ':lo?'স্বল্প স্টক':'পর্যাপ্ত স্টক')+'</span></div><div><i style="width:'+Math.max(3,Math.min(100,p.stock/12*100))+'%;background:'+(z?'#e5384f':lo?'#f59e0b':'#10b981')+'"></i></div>'
++'<div class="pv-act"><button class="g" onclick="restock('+p.id+')">'+ic('pc',26)+'স্টক যোগ</button><button onclick="pvOff('+p.id+')">'+ic('eo',26)+(p.off?'Active':'Inactive')+'</button><button class="e" onclick="editP('+p.id+')">'+ic('ed',26)+'এডিট</button></div></div>'}
+function stock2(){var f=flt(),all=f.length&&f.every(function(p){return sel[p.id]});
+return '<div class="pv-hd"><div class="pv-t"><h2>'+ic('bx',34)+'Products</h2><span style="display:flex;gap:8px"><button class="pv-pill" onclick="document.getElementById(\'pvc\').focus()">'+ic('ls',18)+'ক্যাটাগরি</button><button class="pv-pill" onclick="document.getElementById(\'pvb\').focus()">'+ic('tg',18)+'ব্র্যান্ড</button></span></div><button class="pv-add" onclick="addP()"><i>'+ic('plus',26)+'</i>নতুন পণ্য যুক্ত করুন</button></div>'
++'<div class="pv-box"><div class="pv-s">'+ic('search',26)+'<input id="pvq" placeholder="নাম বা বারকোড দিয়ে খুঁজুন..." value="'+esc(pq)+'" oninput="pvQ(this.value)"></div>'
++'<div class="pv-g"><select id="pvc" onchange="pcat=this.value;pvR()">'+opts(uniq('cat'),pcat,'All Categories')+'</select><select id="pvb" onchange="pbr=this.value;pvR()">'+opts(uniq('brand'),pbr,'All Brands')+'</select>'
++'<button class="'+(pin?'on':'')+'" onclick="pin=!pin;pvR()">'+ic('eo',22)+'Inactive</button><div class="pv-tot">Total: <b>'+bn(f.length)+'</b></div></div>'
++'<div class="pv-sa" onclick="pvAll()"><div class="pv-ck'+(all?' on':'')+'">'+(all?ic('ck',20):'')+'</div>সবগুলো সিলেক্ট করুন</div><div id="pvl">'+(f.length?f.map(card).join(''):'<div class="em">কোনো পণ্য নেই</div>')+'</div></div>'}
+window.pvR=function(){var m=document.getElementById('m');m.innerHTML=stock2();var e=document.getElementById('pvq');};
+window.pvQ=function(v){pq=v;var f=flt();document.getElementById('pvl').innerHTML=f.length?f.map(card).join(''):'<div class="em">কোনো পণ্য নেই</div>';document.querySelector('.pv-tot b').textContent=bn(f.length)};
+window.pvSel=function(id){sel[id]=!sel[id];pvR()};
+window.pvAll=function(){var f=flt(),a=f.every(function(p){return sel[p.id]});f.forEach(function(p){sel[p.id]=!a});pvR()};
+window.pvOff=function(id){var p=P(id);p.off=!p.off;save();toast(p.off?'পণ্য Inactive হয়েছে':'পণ্য Active হয়েছে');pvR()};
+window.pvHist=function(id){var p=P(id),sv=p.stock*p.buy,sl=p.stock*p.sell;modal('<h3>স্টকের হিসাব</h3><div class="row"><span>বর্তমান স্টক</span><b>'+bn(p.stock)+' পিস</b></div><div class="row"><span>স্টক মূল্য (ক্রয়)</span><b>'+money(sv)+'</b></div><div class="row"><span>বিক্রি হলে পাবেন</span><b>'+money(sl)+'</b></div><div class="row"><span>সম্ভাব্য লাভ</span><b class="G">'+money(sl-sv)+'</b></div>')};
+T.stock[1]=stock2;delete HS.stock;
+/* brand field */
+window.addP=function(){modal('<h3>নতুন পণ্য</h3><label>নাম</label><input id="pn"><label>ক্যাটাগরি</label><input id="pc" list="cl" value="ইসলামিক বই"><datalist id="cl">'+uniq('cat').map(function(x){return '<option value="'+esc(x)+'">'}).join('')+'<option value="ইসলামিক বই"><option value="উপন্যাস"><option value="অন্যান্য"></datalist><label>ব্র্যান্ড (ঐচ্ছিক)</label><input id="pbr" list="bl"><datalist id="bl">'+uniq('brand').map(function(x){return '<option value="'+esc(x)+'">'}).join('')+'</datalist><label>বারকোড (ঐচ্ছিক)</label><input id="pbc"><label>ক্রয়মূল্য</label><input id="pb" type="number" inputmode="numeric"><label>বিক্রয়মূল্য</label><input id="ps" type="number" inputmode="numeric"><label>স্টক</label><input id="pk" type="number" inputmode="numeric" value="1"><button class="btn" style="width:100%;margin-top:14px" onclick="saveP()">সংরক্ষণ</button>')};
+window.saveP=function(){var n=val('pn').trim(),s=+val('ps');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}S.products.push({id:S.nid++,name:n,cat:val('pc')||'অন্যান্য',brand:val('pbr').trim(),buy:+val('pb')||0,sell:s,stock:+val('pk')||0,barcode:val('pbc').trim()});save();modal(0);toast('পণ্য যোগ হয়েছে');render()};
+var oE=window.editP,oS=window.saveEP;
+window.editP=function(id){oE(id);var k=document.getElementById('ek1');if(k)k.previousElementSibling.insertAdjacentHTML('beforebegin','<label>ব্র্যান্ড</label><input id="eb2" value="'+esc(P(id).brand||'')+'">')};
+window.saveEP=function(id){var b=document.getElementById('eb2');if(b)P(id).brand=b.value.trim();oS(id)};
+/* POS scan accepts auto SKU */
+window.scanAdd=function(c){c=String(c).trim();if(!c)return;var u=c.toUpperCase(),p=S.products.filter(function(x){return x.barcode==c||(!x.barcode&&sku(x)==u)})[0];if(!p){toast('এই বারকোডের পণ্য নেই');return}add(p.id);var e=document.getElementById('sc');if(e)e.textContent='🛒 '+bn(Object.keys(cart).length)+'টি পণ্য · '+money(ctotal());if(navigator.vibrate)navigator.vibrate(60)};
+render();
+})();
+</script>
 </body>
 </html>
