@@ -159,7 +159,7 @@ navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(fun
 function editP(id){var p=P(id);modal('<h3>পণ্য সম্পাদনা</h3><label>নাম</label><input id="en1" value="'+esc(p.name)+'"><label>ক্যাটাগরি</label><input id="ec1" value="'+esc(p.cat)+'"><label>ক্রয়মূল্য</label><input id="eb1" type="number" inputmode="numeric" value="'+p.buy+'"><label>বিক্রয়মূল্য</label><input id="es1" type="number" inputmode="numeric" value="'+p.sell+'"><label>বারকোড</label><input id="ek1" value="'+esc(p.barcode||'')+'"><div style="display:flex;gap:8px;margin-top:14px"><button class="btn o" style="color:var(--red)" onclick="delP('+id+')">মুছুন</button><button class="btn" style="flex:1" onclick="saveEP('+id+')">সংরক্ষণ</button></div>')}
 function saveEP(id){var p=P(id),n=val('en1').trim(),s=+val('es1');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}p.name=n;p.cat=val('ec1')||'অন্যান্য';p.buy=+val('eb1')||0;p.sell=s;p.barcode=val('ek1').trim();save();modal(0);toast('সংরক্ষিত ✓');render()}
 function delP(id){if(confirm('পণ্যটি মুছবেন? আগের বিক্রির হিসাব থাকবে।')){S.products=S.products.filter(function(p){return p.id!=id});delete cart[id];save();modal(0);render()}}
-var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v23',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
+var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v24',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
 function lineT(id){var p=P(id),r=cr[id]!=null?cr[id]:p.sell;return r*(1-(cd[id]||0)/100)*cart[id]}
 function ctotal(){return Object.keys(cart).reduce(function(x,id){return x+lineT(id)},0)}
 function netT(){return Math.max(0,ctotal()-(+cdisc||0))}
@@ -603,12 +603,49 @@ window.lbT=function(k){L()[k]=!L()[k];save();lbR()};
 window.lbQ=function(d){lc=Math.max(1,Math.min(500,lc+d));lbQu()};
 window.lbQi=function(v){lc=Math.max(1,Math.min(500,Math.floor(+v)||1));var n=document.getElementById('lbn');n.textContent=bn(lc)+'টি লেবেল প্রিন্ট করুন'};
 function lbQu(){document.getElementById('lq').value=lc;lbQi(lc)}
-window.lbPrint=function(){var d=dim(),a4=L().size=='A4',h='';
+window.lbPrintB=function(){var d=dim(),a4=L().size=='A4',h='';
 for(var i=0;i<lc;i++)h+=(a4?'<div style="display:inline-block;margin:1mm">':'<div style="page-break-after:always;break-after:page">')+lblHTML(lp,1,'mm')+'</div>';
 var el=document.getElementById('lblp');if(!el){el=document.createElement('div');el.id='lblp';document.body.appendChild(el)}
 el.innerHTML=h;var st=document.getElementById('lbpg')||document.head.appendChild(Object.assign(document.createElement('style'),{id:'lbpg'}));
 st.textContent='@page{size:'+(a4?'A4':d[0]+'mm '+d[1]+'mm')+';margin:'+(a4?'8mm':'0')+'}';
 document.body.classList.add('lp');var done=function(){document.body.classList.remove('lp');window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);setTimeout(function(){window.print()},120)};
+/* label print via Bluetooth (58mm thermal) */
+async function lbBits(p){
+var o=L(),d=dim(),W=d[0],H=d[1],dpi=o.dpi==300?300:203,headW=dpi==300?568:pW();
+try{await Promise.race([Promise.all([document.fonts.load('500 26px "Hind Siliguri"'),document.fonts.load('26px "Hind Siliguri"')]),new Promise(function(r){setTimeout(r,2500)})])}catch(e){}
+var u=Math.min(dpi/25.4,headW/W),lw=Math.round(W*u),lh=Math.round(H*u),ox=Math.max(0,(headW-lw)>>1),SS=4;
+var cv=document.createElement('canvas');cv.width=lw*SS;cv.height=lh*SS;var x=cv.getContext('2d',{willReadFrequently:true});
+x.fillStyle='#fff';x.fillRect(0,0,cv.width,cv.height);x.fillStyle='#000';x.textBaseline='top';
+var k=u*SS,pad=1.6,iw=(W-2*pad)*k,fam="'Hind Siliguri','Noto Sans Bengali','Noto Sans',sans-serif";
+function fit(t,sz,wt,fm,mw){var z=sz*k;x.font=wt+' '+Math.round(z)+'px '+fm;while(x.measureText(t).width>mw&&z>sz*k*.55){z-=k*.1;x.font=wt+' '+Math.round(z)+'px '+fm}return z}
+var y=pad*k,ss=Math.max(2.4,H*.095),ns=Math.max(3.2,H*.13),ps=Math.max(3.2,H*.14),ks=Math.max(2.3,H*.09);
+x.textAlign='center';fit(S.shop||'',ss,400,fam,iw);x.fillText(S.shop||'',cv.width/2,y);y+=ss*1.25*k;
+fit(p.name,ns,500,fam,iw);x.fillText(p.name,cv.width/2,y);y+=ns*1.25*k;
+var code=sku(p),bh=ps*1.2*k,by=cv.height-pad*k-bh;
+var pr=o.price?'৳'+p.sell:'';x.textAlign='right';var pw=0;
+if(pr){fit(pr,ps,500,fam,iw*.5);pw=x.measureText(pr).width;x.fillText(pr,cv.width-pad*k,by+bh*.05)}
+x.textAlign='left';fit(code,ks,400,'monospace',iw-pw-k);x.fillText(code,pad*k,by+bh*.2);
+var thr=[105,135,160,185][Math.max(0,Math.min(3,S.pq==null?1:S.pq))],src=x.getImageData(0,0,cv.width,cv.height).data,bits=new Uint8Array(headW*lh);
+for(var r=0;r<lh;r++)for(var q=0;q<lw;q++){var sum=0;for(var j=0;j<SS;j++){var base=((r*SS+j)*cv.width+q*SS)*4;for(var i=0;i<SS;i++){var pp=base+i*4;sum+=(src[pp]*299+src[pp+1]*587+src[pp+2]*114)/1000}}if(sum/(SS*SS)<thr)bits[r*headW+ox+q]=1}
+/* barcode in whole dots */
+var m=c128(code),N=m.reduce(function(a,b){return a+b[1]},0),dpm=Math.max(1,Math.floor((W-2*pad)*u/N)),bw=dpm*N,bx=ox+((lw-bw)>>1),top=Math.round((y+.6*k)/SS),bot=Math.round((by-.6*k)/SS);
+if(bot-top<20)top=Math.max(Math.round(y/SS),bot-20);
+var thin=o.thin&&dpm>=2?1:0,cx=bx;
+m.forEach(function(b){var w=b[1]*dpm;if(b[0]){for(var c=0;c<w-thin*(dpm>2?1:1);c++)for(var r=top;r<bot;r++)if(r>=0&&r<lh)bits[r*headW+cx+c]=1}cx+=w});
+return {bits:bits,W:headW,H:lh,dpi:dpi}}
+function lbEsc(L1,copies){var W=L1.W,H=L1.H,wb=W>>3,out=[0x1B,0x40],gap=L1.dpi==300?24:16;
+var rows=[];for(var y0=0;y0<H;y0+=96){var h=Math.min(96,H-y0),buf=new Uint8Array(wb*h);for(var r=0;r<h;r++)for(var c=0;c<W;c++)if(L1.bits[(y0+r)*W+c])buf[r*wb+(c>>3)]|=0x80>>(c&7);rows.push([h,buf])}
+for(var n=0;n<copies;n++){rows.forEach(function(rw){out.push(0x1D,0x76,0x30,0x00,wb&255,wb>>8,rw[0]&255,rw[0]>>8);for(var q=0;q<rw[1].length;q++)out.push(rw[1][q])});out.push(0x1B,0x4A,gap)}
+return new Uint8Array(out)}
+window.lbPrint=async function(){
+if(L().size=='A4'){lbPrintB();return}
+var mode=S.pmode||'browser';
+if(mode!='rawbt'&&!btOK()){toast('এই ব্রাউজারে ব্লুটুথ চলে না, Android Chrome-এ খুলুন');return}
+try{toast('লেবেল তৈরি হচ্ছে...');var b=lbEsc(await lbBits(lp),lc);
+if(mode=='rawbt'){var bin='';for(var i=0;i<b.length;i+=8192)bin+=String.fromCharCode.apply(null,b.subarray(i,i+8192));location.href='intent:base64,'+btoa(bin)+'#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;end;';return}
+if(btStat()!='connected'){var ok=await btConnect();if(!ok)return}
+toast('লেবেল প্রিন্ট হচ্ছে...');await btSend(b);toast('লেবেল পাঠানো হয়েছে ✓')}
+catch(e){btChar=null;toast('লেবেল ছাপা হয়নি: '+(e&&e.message||e))}};
 /* product page */
 function flt(){return S.products.filter(function(p){return (!!p.off)==pin&&(!pcat||p.cat==pcat)&&(!pbr||p.brand==pbr)&&(!pq||(p.name+' '+sku(p)).toLowerCase().indexOf(pq.toLowerCase())>=0)})}
 function uniq(k){var r=[];S.products.forEach(function(p){if(p[k]&&r.indexOf(p[k])<0)r.push(p[k])});return r}
