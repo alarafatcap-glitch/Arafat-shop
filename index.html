@@ -324,6 +324,71 @@ header{gap:4px}header .ib{padding:7px}
 <div id="toast"></div>
 <div id="layer"></div>
 <script>
+/* ===== Google Sheet Sync via Apps Script (AmarDokan) ===== */
+var gd=(function(){
+var K={url:'ad_gurl',key:'ad_gkey',on:'ad_gon',last:'ad_glast'},timer=null,busy=false,again=false,em='',st='off';
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){}return null}
+function enabled(){return ls(K.on)=='1'}
+function text(){var l=+ls(K.last)||0,t=l?' · শেষ: '+new Date(l).toLocaleTimeString('bn-BD',{hour:'numeric',minute:'2-digit'}):'';
+return {ok:'✅ গুগল শিটে সেভ আছে'+t,sync:'⏳ সিঙ্ক হচ্ছে…',wait:'⏳ সেভ হবে…',net:'📴 ইন্টারনেট নেই, নেট এলে সিঙ্ক হবে',err:'❌ '+em,off:'বন্ধ'}[st]||''}
+function setSt(s,m){st=s;em=m||'';var b=document.getElementById('gdb');
+if(b){b.style.opacity=st=='off'?.45:1;b.style.color=st=='err'?'var(--red)':'var(--grn)'}
+var e=document.getElementById('gdst');if(e)e.textContent=text()}
+function call(post,body,cb,u,k){
+u=u||ls(K.url);k=k||ls(K.key);
+var opt=post?{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({k:k,data:body})}:{};
+var url=post?u:u+(u.indexOf('?')<0?'?':'&')+'k='+encodeURIComponent(k);
+fetch(url,opt).then(function(r){return r.json()}).then(function(j){
+if(!j||!j.ok)return cb({msg:j&&j.error=='auth'?'গোপন কোড মেলেনি':'শিট থেকে উত্তর আসেনি'});
+cb(null,j)}).catch(function(){
+cb(navigator.onLine?{msg:'সংযোগ হয়নি — লিংক ঠিক আছে কিনা ও ডিপ্লয় হয়েছে কিনা দেখুন'}:{net:true})})}
+/* full=true: দুই দিকের সিঙ্ক (নতুনটা জেতে); full=false: শুধু শিটে পাঠানো */
+function run(full,cb){
+if(busy){again=true;return}
+busy=true;setSt('sync');
+var fin=function(e){busy=false;
+if(e)setSt(e.net?'net':'err',e.msg);else{ls(K.last,String(Date.now()));setSt('ok')}
+var a=again;again=false;if(a&&!e)run(false);
+cb&&cb(!e)};
+var push=function(){call(true,S,function(e){fin(e)})};
+if(!full)return push();
+call(false,null,function(e,j){
+if(e)return fin(e);
+var r=j.data,rt=+(r&&r._ts)||0,lt=+S._ts||0;
+if(!r||!r.products)return push();
+if(rt>lt){ls('ad_v1_prev',JSON.stringify(S));ls('ad_v1',JSON.stringify(r));S=load();render();toast('গুগল শিট থেকে নতুন ডাটা এসেছে ✓');fin()}
+else if(lt>rt)push();else fin()})}
+window.addEventListener('online',function(){if(enabled())setTimeout(function(){run(true)},1500)});
+var lastV=0;document.addEventListener('visibilitychange',function(){
+if(!document.hidden&&enabled()&&Date.now()-lastV>60000){lastV=Date.now();run(true)}});
+return {
+on:enabled,text:text,val:function(k){return ls(K[k])||''},
+dirty:function(){if(!enabled())return;clearTimeout(timer);timer=setTimeout(function(){run(false)},3000);setSt('wait')},
+connect:function(){var u=(document.getElementById('gurl').value||'').trim(),k=(document.getElementById('gkey').value||'').trim();
+if(!/^https:\/\/script\.google\.com\/.+\/exec/.test(u)){toast('Script লিংক ঠিক নয় (শেষে /exec থাকবে)');return}
+if(!k){toast('গোপন কোড দিন');return}
+toast('যাচাই হচ্ছে…');
+call(false,null,function(e){
+if(e){toast(e.msg||'সংযোগ হয়নি');return}
+ls(K.url,u);ls(K.key,k);ls(K.on,'1');render();
+run(true,function(ok){if(ok)toast('গুগল শিট সংযুক্ত ✓')})},u,k)},
+now:function(){run(true,function(ok){toast(ok?'সিঙ্ক সম্পন্ন ✓':'সিঙ্ক হয়নি')})},
+tap:function(){if(!enabled()){toast('সেটিংস → ফিচার সেটিংস থেকে গুগল শিট সংযুক্ত করুন');return}
+toast(text());if(!busy)run(true)},
+off:function(){[K.url,K.key,K.on,K.last].forEach(function(k){ls(k,null)});setSt('off');render()},
+init:function(){setSt(enabled()?'wait':'off');if(enabled())setTimeout(function(){run(true)},1500)}
+}})();
+function gdCard(){
+var c='<div class="c" style="margin-top:12px"><b>📊 গুগল শিট সিঙ্ক</b>';
+if(!gd.on())return c+'<small style="display:block;color:var(--mut)">ডাটা আপনার গুগল শিটে সেভ থাকবে — পণ্য, বিক্রি, কাস্টমার, খরচ আলাদা ট্যাবে দেখা যাবে।</small>'
++'<label>Script লিংক (/exec দিয়ে শেষ)</label><input id="gurl" value="'+esc(gd.val('url'))+'" placeholder="https://script.google.com/macros/s/.../exec">'
++'<label>গোপন কোড</label><input id="gkey" value="'+esc(gd.val('key'))+'" placeholder="Script-এ যে কোড দিয়েছেন">'
++'<button class="btn" style="margin-top:10px" onclick="gd.connect()">গুগল শিট সংযুক্ত করুন</button></div>';
+return c+'<small id="gdst" style="display:block;color:var(--mut);margin-top:4px">'+gd.text()+'</small>'
++'<button class="btn" style="margin:10px 8px 0 0" onclick="gd.now()">🔄 এখনই সিঙ্ক</button>'
++'<button class="btn o" style="margin-top:10px" onclick="if(confirm(\'সংযোগ বন্ধ হবে (শিটের ডাটা থাকবে)। নিশ্চিত?\'))gd.off()">বিচ্ছিন্ন করুন</button></div>'}
+</script>
+<script>
 var cam=null,camT=null,lastBC='',lastAt=0,cfr='30',rtab='n',stt='l',mq='',stab='p',hid=0,em=0,ec='all',stb='s',dd=0,tr=7,sa=false,bt='list',bf='all',srt='due';
 var S,view='dash',cat='সব',q='',cart={},dark=null;
 function PF(){var f=S&&S.pfont;return f=='noto'?"'Noto Serif Bengali','Tiro Bangla','Noto Serif',serif":f=='tiro'?"'Tiro Bangla','Noto Serif Bengali','Hind Siliguri',serif":"'Hind Siliguri','Noto Sans Bengali','Noto Sans',sans-serif"}
@@ -342,7 +407,7 @@ d.shop='আরাফাত শপ';if(!d.uname)d.uname='আরাফাত শ�
 var demo=d.products.length==10&&d.products[0].name=='ঈমান সবার আগে'&&!(d.sales||[]).length&&!(d.expenses||[]).length&&!(d.purs||[]).length&&(d.customers||[]).length==1&&d.customers[0].name=='ইউ নাইম';
 if(demo){d.products=[];d.customers=[]}
 return d}
-function save(){try{localStorage.setItem('ad_v1',JSON.stringify(S))}catch(e){}}
+function save(q){try{if(!q)S._ts=Date.now();localStorage.setItem('ad_v1',JSON.stringify(S))}catch(e){}if(!q)gd.dirty()}
 function toast(t){var e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(function(){e.style.display='none'},1800)}
 function theme(){var r=document.documentElement;var isD=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);r.setAttribute('data-theme',isD?'light':'dark')}
 function go(v){if(v=='sales'&&!keepF){mfd='7';mst='all';mq2=''}keepF=false;view=v;drawer(0);modal(0);render()}
@@ -357,7 +422,7 @@ navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(fun
 function editP(id){var p=P(id);modal('<h3>পণ্য সম্পাদনা</h3><label>নাম</label><input id="en1" value="'+esc(p.name)+'"><label>ক্যাটাগরি</label><input id="ec1" value="'+esc(p.cat)+'"><label>ক্রয়মূল্য</label><input id="eb1" type="number" inputmode="numeric" value="'+p.buy+'"><label>বিক্রয়মূল্য</label><input id="es1" type="number" inputmode="numeric" value="'+p.sell+'"><label>বারকোড</label><input id="ek1" value="'+esc(p.barcode||'')+'"><div style="display:flex;gap:8px;margin-top:14px"><button class="btn o" style="color:var(--red)" onclick="delP('+id+')">মুছুন</button><button class="btn" style="flex:1" onclick="saveEP('+id+')">সংরক্ষণ</button></div>')}
 function saveEP(id){var p=P(id),n=val('en1').trim(),s=+val('es1');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}p.name=n;p.cat=val('ec1')||'অন্যান্য';p.buy=+val('eb1')||0;p.sell=s;p.barcode=val('ek1').trim();save();modal(0);toast('সংরক্ষিত ✓');render()}
 function delP(id){if(confirm('পণ্যটি মুছবেন? আগের বিক্রির হিসাব থাকবে।')){S.products=S.products.filter(function(p){return p.id!=id});delete cart[id];save();modal(0);render()}}
-var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v31',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
+var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v33',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
 function lineT(id){var p=P(id),r=cr[id]!=null?cr[id]:p.sell;return r*(1-(cd[id]||0)/100)*cart[id]}
 function ctotal(){return Object.keys(cart).reduce(function(x,id){return x+lineT(id)},0)}
 function netT(){return Math.max(0,ctotal()-(+cdisc||0))}
@@ -658,7 +723,7 @@ if(stab=='p')return h+'<div class="c"><b>👤 ইউজার প্রোফা
 +'<div class="c" style="margin-top:12px"><b>🌐 অ্যাপের ভাষা</b><div style="display:flex;gap:8px;margin-top:10px"><button class="btn'+(S.lang=='en'?' o':'')+'" style="flex:1" onclick="S.lang=\'bn\';save();render()">বাংলা</button><button class="btn'+(S.lang=='en'?'':' o')+'" style="flex:1" onclick="S.lang=\'en\';save();render()">English</button></div><small style="color:var(--mut)">English-এ এখন শুধু মেনু, নেভিগেশন ও পেজের নাম বদলায়।</small></div>'
 +'<div class="c" style="margin-top:12px"><div class="row" style="border:0"><span><b>🔐 অ্যাপ লক</b><small style="color:var(--mut);display:block">অ্যাপ নতুন করে চালু হলে বা ৫ মিনিটের বেশি বাইরে থাকলে PIN দিতে হবে।</small></span>'+sw(!!S.pin,S.pin?'pinOff()':'pinOn()')+'</div></div>';
 if(stab=='f')return h+'<div class="c"><div class="row" style="border:0"><span><b>📦 স্টক সতর্কতা সীমা</b><small style="color:var(--mut);display:block">এর নিচে স্টক নামলে "স্টক ফুরিয়ে আসছে"-তে দেখাবে</small></span><input type="number" inputmode="numeric" style="width:76px;margin:0" value="'+LM()+'" onchange="S.low=Math.max(0,+this.value||0);save();hb()"></div></div><div class="c" style="margin-top:12px"><div class="row" style="border:0"><span><b>🤝 বাকিতে বিক্রি</b><small style="color:var(--mut);display:block">বন্ধ করলে POS-এ পুরো টাকা না নিয়ে বিক্রি হবে না</small></span>'+sw(!S.noCredit,'S.noCredit=!S.noCredit;save();render()')+'</div></div>'
-+''+prCard()+'<div class="c" style="margin-top:12px"><b>🔄 অ্যাপ ভার্সন: '+VER+'</b><small style="display:block;color:var(--mut)">পুরনো ভার্সন দেখালে চাপুন (আপনার ডাটা মুছবে না)</small><button class="btn" style="margin-top:8px" onclick="hardReload()">নতুন ভার্সন লোড করুন</button></div><div class="c" style="margin-top:12px"><b>💾 ডাটা</b><small style="display:block;color:var(--mut)">ডাটা শুধু এই ফোনের ব্রাউজারে থাকে, নিয়মিত ব্যাকআপ নিন</small><button class="btn" style="margin:8px 8px 0 0" onclick="backup()">⬇ ব্যাকআপ</button><label class="btn o" style="display:inline-block;margin:8px 0 0">⬆ রিস্টোর<input type="file" accept=".json" hidden onchange="restore(this.files[0])"></label><br><button class="btn" style="background:var(--red);margin-top:12px" onclick="if(confirm(\'সব ডাটা মুছে যাবে। নিশ্চিত?\')){S=seed();save();render()}">সব ডাটা মুছুন</button></div>';
++''+prCard()+'<div class="c" style="margin-top:12px"><b>🔄 অ্যাপ ভার্সন: '+VER+'</b><small style="display:block;color:var(--mut)">পুরনো ভার্সন দেখালে চাপুন (আপনার ডাটা মুছবে না)</small><button class="btn" style="margin-top:8px" onclick="hardReload()">নতুন ভার্সন লোড করুন</button></div>'+gdCard()+'<div class="c" style="margin-top:12px"><b>💾 ডাটা</b><small style="display:block;color:var(--mut)">ডাটা এই ফোনে থাকে; গুগল শিট সংযুক্ত থাকলে সেখানেও সেভ হয়। তবুও মাঝেমধ্যে ব্যাকআপ নিন</small><button class="btn" style="margin:8px 8px 0 0" onclick="backup()">⬇ ব্যাকআপ</button><label class="btn o" style="display:inline-block;margin:8px 0 0">⬆ রিস্টোর<input type="file" accept=".json" hidden onchange="restore(this.files[0])"></label><br><button class="btn" style="background:var(--red);margin-top:12px" onclick="if(confirm(\'সব ডাটা মুছে যাবে। নিশ্চিত?\')){S=seed();save();render()}">সব ডাটা মুছুন</button></div>';
 return h+'<div class="c"><b>🧾 ইনভয়েস সেটআপ</b><small style="display:block;color:var(--mut)">ক্যাশ মেমোর উপরে-নিচে যা দেখাবে</small><label>দোকানের নাম 🔒</label><input value="'+esc(S.shop)+'" readonly style="opacity:.85"><label>ঠিকানা</label><input value="'+esc(v.addr||'')+'" onchange="inv(\'addr\',this.value)"><label>ফোন</label><input type="tel" value="'+esc(v.phone||'')+'" onchange="inv(\'phone\',this.value)"><label>মেমো নম্বরের শুরু (যেমন INV-)</label><input value="'+esc(v.pre||'')+'" onchange="inv(\'pre\',this.value)"><label>নিচের লেখা</label><input value="'+esc(v.note||'')+'" placeholder="ধন্যবাদ, আবার আসবেন" onchange="inv(\'note\',this.value)"></div><div class="em" style="padding:12px">মেমো দেখতে "ক্যাশ মেমো" তালিকায় যেকোনো বিক্রি চাপুন</div>'}
 function SA(id){return S.sales.filter(function(x){return x.id==id})[0]}
 function dt(t){return new Date(t).toLocaleDateString('bn-BD',{day:'numeric',month:'short'})}
@@ -748,9 +813,9 @@ var n=[['dash','grid','ড্যাশবোর্ড'],['baki','handcoins','ব
 document.getElementById('nav').innerHTML=n.map(function(x){return '<button class="'+(x[0]=='pos'?'pos ':'')+(x[0]==view?'on':'')+'" onclick="'+(x[0]=='menu'?'drawer(1)':'q=\'\';go(\''+x[0]+'\')')+'"><span class="ic">'+IC(x[1],x[0]=='pos'?28:22)+'</span>'+Lg(x[2])+'</button>'}).join('')}
 function backup(){var b=new Blob([JSON.stringify(S)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='amardokan-backup-'+ymd(Date.now())+'.json';a.click()}
 function restore(f){if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d.products)throw 0;S=d;save();render();toast('ডাটা ফিরে এসেছে ✓')}catch(e){toast('ফাইলটি সঠিক নয়')}};r.readAsText(f)}
-document.querySelector('header').innerHTML='<button class="ib" onclick="drawer(1)" style="color:var(--mut)">'+IC('menu',24)+'</button><h1 id="ttl"></h1><button class="ib" id="plb" onclick="go(\'help\')" style="background:color-mix(in srgb,var(--pri) 12%,transparent);border-radius:12px;color:var(--pri)">'+IC('play',22)+'</button><button class="ib" onclick="toast(\'ডাটা এই ফোনেই সংরক্ষিত · \'+VER)" style="color:var(--grn)">'+IC('cloud',22)+'</button><button class="ib" onclick="theme()" style="color:var(--mut)">'+IC('moon',22)+'</button><button class="ib" onclick="bell()" style="position:relative;color:var(--mut)">'+IC('bell',22)+'<b id="bg"></b></button><button class="ib" onclick="go(\'set\')"><span class="av" id="av">M</span></button>';
+document.querySelector('header').innerHTML='<button class="ib" onclick="drawer(1)" style="color:var(--mut)">'+IC('menu',24)+'</button><h1 id="ttl"></h1><button class="ib" id="plb" onclick="go(\'help\')" style="background:color-mix(in srgb,var(--pri) 12%,transparent);border-radius:12px;color:var(--pri)">'+IC('play',22)+'</button><button class="ib" id="gdb" onclick="gd.tap()" style="color:var(--grn);opacity:.45">'+IC('cloud',22)+'</button><button class="ib" onclick="theme()" style="color:var(--mut)">'+IC('moon',22)+'</button><button class="ib" onclick="bell()" style="position:relative;color:var(--mut)">'+IC('bell',22)+'<b id="bg"></b></button><button class="ib" onclick="go(\'set\')"><span class="av" id="av">M</span></button>';
 window.addEventListener('offline',function(){toast('ইন্টারনেট নেই, অ্যাপ অফলাইনেই চলছে')});window.addEventListener('online',function(){toast('ইন্টারনেট ফিরেছে')});
-S=load();save();render();lock();chkUpd();
+S=load();save(1);render();lock();chkUpd();gd.init();
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(function(){});
 </script>
