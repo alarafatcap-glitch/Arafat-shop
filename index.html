@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>আরাফাত শপ</title>
+<style id="boot">html:not(.rdy) body{visibility:hidden}html{background:var(--bg)}</style>
+<script>setTimeout(function(){document.documentElement.classList.add("rdy")},2500)</script>
 <style id="pgs">.tg2{border:0;border-radius:12px;padding:10px 18px;background:none;color:var(--mut);font-family:inherit;font-weight:600;font-size:15px;cursor:pointer}.tg2.on{background:var(--card);color:var(--tx);box-shadow:0 2px 8px #0002}
 @media print{body.pm2 header,body.pm2 nav,body.pm2 main,body.pm2 #bar,body.pm2::before{display:none!important}body.pm2 .ov{position:static;background:none;display:block}body.pm2 .sh{max-height:none;box-shadow:none;padding:0;background:none;overflow:visible}body.pm2 .sh>*:not(.rcs){display:none!important}body.pm2 .sh.full{height:auto;display:block;overflow:visible}body.pm2 .rcs{background:none!important;padding:0!important;overflow:visible!important}body.pm2 .rcpw{zoom:1!important;box-shadow:none!important;margin:0 auto!important}}
 .sh.full{height:calc(100% - 56px);max-height:none;padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:26px 26px 0 0}.rcs{flex:1;overflow:auto;background:var(--bg);padding:16px 14px 90px}
@@ -118,6 +120,201 @@ textarea{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--
 .ps{position:relative}
 .iw2{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:8px 12px;margin-top:12px}.iw2 .ic{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}.iw2 input{border:0;margin:0;background:none;padding:10px 0;flex:1;min-width:0;font-size:17px}
 </style>
+<style id="pv21">
+#lblp{display:none}
+.pv-hd{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 10%,var(--card)),color-mix(in srgb,var(--ac2) 8%,var(--card)));border:1px solid var(--bd);border-radius:28px;padding:18px;box-shadow:0 8px 24px #5b3df51a}
+.pv-t{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.pv-t h2{margin:0;border:0;padding:0;font-size:26px;font-weight:700;display:flex;align-items:center;gap:10px;color:var(--tx)}
+.pv-t h2 svg{color:#2f6bff}
+.pv-pill{border:1px solid var(--bd);background:var(--card);border-radius:99px;padding:8px 14px;font-family:inherit;font-size:14px;font-weight:600;color:var(--pri);display:flex;gap:6px;align-items:center;cursor:pointer}
+.pv-add{width:100%;margin-top:14px;border:0;border-radius:20px;padding:16px;background:linear-gradient(90deg,#2563ff,#7a2cf5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 24px #5b3df566;cursor:pointer}
+.pv-add i{width:42px;height:42px;border-radius:13px;background:#ffffff33;display:flex;align-items:center;justify-content:center}
+.pv-box{margin-top:16px;background:color-mix(in srgb,var(--card) 90%,transparent);border:1px solid var(--bd);border-radius:28px;padding:16px}
+.pv-s{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);background:var(--card);border-radius:18px;padding:0 14px;box-shadow:0 2px 8px #0000000d}
+.pv-s input{border:0;margin:0;background:none;padding:14px 0;outline:0}
+.pv-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pv-g select,.pv-g button{margin:0;border-radius:18px;padding:14px;font-size:16px;font-weight:500;box-shadow:0 2px 8px #0000000d}
+.pv-g button{border:1px solid var(--bd);background:var(--card);color:var(--tx);font-family:inherit;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.pv-g button.on{background:color-mix(in srgb,var(--red) 12%,var(--card));color:var(--red)}
+.pv-tot{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 10%,var(--card));border-radius:18px;display:flex;align-items:center;justify-content:center;gap:8px;color:#2563eb;font-size:15px}
+.pv-tot b{font-size:20px;color:#1d4ed8}
+.pv-sa{display:flex;align-items:center;gap:14px;padding:14px 4px;margin-top:14px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);font-weight:700;font-size:18px;cursor:pointer}
+.pv-ck{width:34px;height:34px;border-radius:50%;border:3px solid var(--bd);flex:none;background:var(--card);display:flex;align-items:center;justify-content:center;color:#fff}
+.pv-ck.on{background:#2f6bff;border-color:#2f6bff}
+.pv-c{margin-top:16px;background:var(--card);border:1px solid var(--bd);border-radius:28px;padding:16px;box-shadow:0 6px 18px #0000000f}
+.pv-c.off{opacity:.65}
+.pv-h{display:flex;align-items:center;gap:12px}
+.pv-h b{font-size:21px;flex:1;line-height:1.25}
+.pv-stp{background:#fdf0bf;color:#b45309;border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.pv-stp.ok{background:#d9f7e8;color:#067a53}.pv-stp.z{background:#fde0e4;color:#c9243b}
+.pv-tg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pv-tg span,.pv-tg button{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 9%,var(--card));color:#2457d6;border-radius:99px;padding:6px 14px;font-family:inherit;font-size:14px;display:flex;align-items:center;gap:6px}
+.pv-tg span.b{background:color-mix(in srgb,#8b5cf6 12%,var(--card));color:#5b3df5}
+.pv-tg button{background:var(--card);color:var(--tx);font-weight:600;cursor:pointer}
+.pv-pr{display:grid;grid-template-columns:1fr 1fr;margin-top:16px;border:1px solid var(--bd);background:var(--bg);border-radius:20px;padding:16px}
+.pv-pr div+div{border-left:1px solid var(--bd);padding-left:18px}
+.pv-pr small{color:var(--mut);font-size:15px}.pv-pr b{display:block;font-size:26px;margin-top:4px}
+.pv-bar{display:flex;justify-content:space-between;margin-top:18px;color:var(--mut);font-size:15px}
+.pv-bar+div{height:10px;border-radius:9px;background:var(--bd);margin-top:8px;overflow:hidden}.pv-bar+div i{display:block;height:100%;border-radius:9px;background:#f59e0b}
+.pv-act{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
+.pv-act button{border:1px solid var(--bd);background:var(--bg);border-radius:18px;padding:14px 4px;font-family:inherit;font-weight:700;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mut);cursor:pointer}
+.pv-act .g{background:color-mix(in srgb,var(--grn) 12%,var(--card));color:var(--grn);border-color:color-mix(in srgb,var(--grn) 30%,var(--bd))}
+.pv-act .e{background:color-mix(in srgb,#3b82f6 10%,var(--card));color:#2563eb;border-color:color-mix(in srgb,#3b82f6 30%,var(--bd))}
+.lbo{position:fixed;inset:0;z-index:40;background:#3a3f5a88;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:14px}
+.lbm{width:100%;max-width:460px;max-height:94%;display:flex;flex-direction:column;background:color-mix(in srgb,var(--card) 88%,#c9c3f5);border:1px solid #fff6;border-radius:30px;padding:22px 20px 18px;box-shadow:0 24px 60px #0005}
+.lbm h3{margin:0;font-size:23px}
+.lbx{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--bd)}
+.lbx button{border:0;background:none;color:var(--tx);cursor:pointer}
+.lbb{overflow:auto;flex:1;padding:14px 4px 6px}
+.lbr{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;font-weight:600;margin:6px 0}
+.lbv{background:var(--bg);border-radius:22px;padding:14px;display:flex;justify-content:center}
+.lbp{background:#fff;color:#000;border-radius:16px;box-shadow:0 4px 14px #0002;overflow:hidden}
+.lbn{color:var(--mut);font-size:13px;text-align:center;margin:10px 0}
+.lbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.lbs button,.lbd button{border:2px solid transparent;background:color-mix(in srgb,var(--bd) 60%,var(--card));border-radius:18px;padding:14px 2px;font-family:inherit;font-weight:700;font-size:15px;color:var(--tx);cursor:pointer}
+.lbs button.on,.lbd button.on{border-color:#2f7bff;color:#2f5be0;background:color-mix(in srgb,#3b82f6 10%,var(--card))}
+.lbs .w{grid-column:span 2}
+.lbc{display:flex;align-items:center;gap:8px;margin-top:10px}
+.lbc input{margin:0;text-align:center;border-radius:20px;padding:12px 4px;width:78px}
+.lbd{display:flex;align-items:center;gap:10px;margin-top:12px}.lbd button{padding:14px 20px}
+.lbt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+.lbt b{display:block;font-size:15px}.lbt small{color:var(--mut)}
+.lbg{width:60px;height:34px;border-radius:99px;background:#cfd6e4;position:relative;border:0;flex:none;cursor:pointer}
+.lbg:after{content:"";position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.2s}
+.lbg.on{background:#2f7bff}.lbg.on:after{left:30px}
+.lbq{display:flex;align-items:center;gap:8px;margin-top:6px}
+.lbq button{width:46px;height:46px;border-radius:50%;border:1px solid var(--bd);background:var(--card);font-size:22px;color:var(--tx);cursor:pointer}
+.lbq input{margin:0;width:100px;text-align:center;font-size:22px;font-weight:700;border-radius:20px}
+.lbgo{margin-top:12px;border:0;border-radius:20px;padding:17px;background:linear-gradient(90deg,#2f7bff,#5b3df5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 24px #3b5bf566;cursor:pointer}
+@media print{body.lp>*:not(#lblp){display:none!important}body.lp #lblp{display:block}body.lp,html{background:#fff!important;padding:0!important}}
+.sdd{position:relative}
+.sdd-b{width:100%;display:flex!important;align-items:center;justify-content:space-between!important;gap:6px;text-align:left}
+.sdd-b span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.sdd-b svg{flex:none;transition:transform .15s}
+.sdd.open .sdd-b{border-color:#2f6bff;box-shadow:0 0 0 2px #2f6bff55}
+.sdd.open .sdd-b svg{transform:rotate(180deg)}
+.sdd-m{display:none;position:absolute;top:calc(100% + 6px);left:0;width:max(100%,240px);z-index:60;background:var(--card);border:1px solid var(--bd);border-radius:18px;box-shadow:0 14px 34px #00000055;padding:10px}
+.sdd:nth-child(2) .sdd-m{left:auto;right:0}
+.sdd.open .sdd-m{display:block}
+.sdd-m input{margin:0 0 8px;border-radius:12px;padding:11px 12px;font-size:15px;outline:0}
+.sdd-l{max-height:240px;overflow-y:auto}
+.sdd-l div{padding:12px;border-radius:10px;font-size:16px;cursor:pointer;color:var(--tx)}
+.sdd-l div.on{background:color-mix(in srgb,#2f6bff 18%,var(--card));color:#2f6bff;font-weight:700}
+.sdd-l div:active{background:color-mix(in srgb,#2f6bff 12%,var(--card))}
+.sdd-l .sdd-no{display:none;color:var(--mut);text-align:center;cursor:default}
+</style>
+<style id="zahir-theme">
+/* ===== মাকতাবায়ে জহির: নতুন ডিজাইন (সবুজ · সোনালি · পার্চমেন্ট) ===== */
+:root{--ac:#0f5a43!important;--ac2:#b8893a!important;--gold:#c19a4b;--bg:#f6efe2;--card:#fffcf6;--tx:#16241d;--mut:#6c776d;--pri:#0f5a43;--grn:#0f8a5f;--red:#c0392b;--amb:#a97618;--bd:#e7dcc6;--hd:#0f4c3a;--tiro:'Tiro Bangla','Noto Serif Bengali','Hind Siliguri',serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}}
+:root[data-theme="dark"]{--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}
+:root[data-theme="light"]{--ac:#0f5a43!important;--ac2:#b8893a!important}
+html{background:var(--bg)!important;background-image:radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--pri) 9%,transparent) 1px,transparent 0)!important;background-size:22px 22px!important}
+body{background:transparent;padding-bottom:130px}
+h1,h2,h3{font-family:var(--tiro)}
+/* হেডার */
+header,body::before{background:var(--hd)!important}
+header{color:#f6ebd0;border-bottom:0;border-radius:0 0 26px 26px;padding:14px 14px 18px;margin-bottom:6px;box-shadow:0 12px 28px color-mix(in srgb,var(--hd) 45%,transparent)}
+header h1{font-family:var(--tiro);font-size:20px;color:#f6ebd0;letter-spacing:.2px}
+header .ib{color:#f6ebd0!important;background:rgba(255,255,255,.08)!important;border-radius:13px;padding:8px}
+header .ib:active{background:rgba(255,255,255,.18)!important}
+header #vtag{display:none}
+.av{background:linear-gradient(145deg,#e3c37a,#b8893a);color:#17261e;border-radius:50%}
+main{padding:12px 14px}
+/* হিরো */
+.hero{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-left:5px solid var(--gold);border-radius:20px;box-shadow:0 8px 22px rgba(70,50,15,.08);padding:14px 16px}
+.hero .hi{background:color-mix(in srgb,var(--gold) 20%,var(--card));color:var(--pri);border-radius:14px}
+.hero b{font-family:var(--tiro);font-size:21px;color:var(--pri)}
+.hero small{color:var(--mut)}
+/* শিরোনাম */
+h2{border:0!important;padding:0!important;font-size:19px;color:var(--pri)}
+main>h2{display:flex;align-items:center;gap:12px}
+main>h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.hs h2{font-size:19px}
+/* কার্ড */
+.c,.p{background:var(--card);border:1px solid var(--bd);border-radius:20px;box-shadow:0 6px 18px rgba(70,50,15,.06)}
+.row{border-bottom:1px dashed var(--bd)}
+.k3{border-radius:22px;padding:16px;position:relative;overflow:hidden}
+.k3::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.k3h{display:flex;align-items:center;gap:10px}
+.k3l{font-weight:600;font-size:15px;color:var(--mut)}
+.k3 .k3v{display:block;font-family:var(--tiro);font-size:30px;margin-top:14px;color:var(--tx);font-weight:400}
+.g>div[style*="cursor:pointer"]{grid-column:1/-1}
+.g>div[style*="cursor:pointer"]>.k3{background:linear-gradient(135deg,var(--hd),color-mix(in srgb,var(--hd) 62%,#2b8f6b));border:0;color:#f6ebd0;box-shadow:0 14px 30px color-mix(in srgb,var(--hd) 40%,transparent)}
+.g>div[style*="cursor:pointer"]>.k3::before{background:linear-gradient(90deg,#e3c37a,transparent)}
+.g>div[style*="cursor:pointer"]>.k3 .k3l,.g>div[style*="cursor:pointer"]>.k3 small{color:#e9dfc4}
+.g>div[style*="cursor:pointer"]>.k3 .k3v{color:#f3d58c;font-size:36px}
+.g>div[style*="cursor:pointer"]>.k3 .k3h>span:first-child{background:rgba(255,255,255,.14)!important;color:#f3d58c!important}
+.sct{display:flex;align-items:center;gap:12px;border-radius:18px;padding:12px;border:1px solid var(--bd);background:var(--card);border-left:4px solid var(--gold)}
+.sct .si{width:46px;height:46px;border-radius:14px;background:color-mix(in srgb,var(--pri) 12%,var(--card));color:var(--pri);display:flex;align-items:center;justify-content:center;flex:none}
+.sct b{font-family:var(--tiro);font-size:21px;font-weight:400;display:block}
+/* দ্রুত কাজ */
+.qa{background:var(--card)!important;border:1px solid var(--bd)!important;color:var(--tx)!important;border-radius:20px;flex-direction:column;align-items:flex-start;gap:12px;padding:14px;box-shadow:0 6px 16px rgba(70,50,15,.06)}
+.qa>span{background:var(--pri)!important;color:#f6ebd0!important;border-radius:14px!important;box-shadow:none!important}
+.qa:nth-child(even)>span{background:linear-gradient(145deg,#e3c37a,#b8893a)!important;color:#17261e!important}
+/* বোতাম */
+.btn{background:var(--pri);color:#f6ebd0;border-radius:14px;box-shadow:0 6px 14px color-mix(in srgb,var(--pri) 28%,transparent);font-weight:600}
+.btn.g2{background:linear-gradient(145deg,#d9b565,#b8893a);color:#17261e}
+.btn.o{background:transparent;color:var(--pri);border:1.5px solid color-mix(in srgb,var(--pri) 55%,var(--bd));box-shadow:none}
+.chip{border-radius:12px;background:var(--card)}
+.chip.on{background:var(--pri);color:#f6ebd0;border-color:var(--pri)}
+.tg.on{background:var(--pri);color:#f6ebd0}
+.lk{color:var(--pri);border-color:var(--bd)}
+input,select,textarea{background:var(--card);border:1.5px solid var(--bd);border-radius:14px}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 18%,transparent)}
+.iw,.iw2{background:var(--card);border-color:var(--bd)}
+/* নিচের মেনু */
+nav{left:0;right:0;bottom:0;background:var(--hd)!important;border:0;border-radius:24px 24px 0 0;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -12px 30px rgba(0,0,0,.2)}
+nav button{color:rgba(246,235,208,.62)}
+nav button .ic{width:48px;height:32px;border-radius:12px}
+nav button.on{color:#f3d58c}
+nav button.on .ic{background:rgba(243,213,140,.16)!important;color:#f3d58c!important;box-shadow:none!important}
+nav .pos{color:#f3d58c}
+nav .pos .ic,nav .pos.on .ic{width:58px;height:58px;border-radius:50%;margin-top:-30px;background:linear-gradient(145deg,#e3c37a,#b8893a)!important;color:#17261e!important;border:4px solid var(--bg);box-shadow:0 10px 22px rgba(120,85,20,.4)!important}
+.bar{bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+#toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));background:var(--hd);color:#f6ebd0;border:1px solid rgba(193,154,75,.55)}
+/* শিট, ড্রয়ার */
+.ov{background:rgba(10,30,22,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.sh{border-radius:28px 28px 0 0;border-top:3px solid var(--gold)}
+.sh h3{font-family:var(--tiro);font-size:21px;color:var(--pri);margin-top:2px}
+.dr{background:var(--card);border-right:3px solid var(--gold);border-radius:0 28px 28px 0}
+.fbar{background:var(--hd)}
+.fbw,.ps{border-top:3px solid var(--gold)}
+/* পণ্য/ক্রেতা পাতার পুরনো নীল-বেগুনি রং */
+.pv-hd{background:var(--card);box-shadow:0 8px 22px rgba(70,50,15,.07)}
+.pv-t h2 svg{color:var(--gold)}
+.pv-add{background:var(--pri);box-shadow:0 10px 22px color-mix(in srgb,var(--pri) 35%,transparent)}
+.pv-pill{color:var(--pri)}
+.pv-ck.on{background:var(--pri);border-color:var(--pri)}
+.pv-tot{background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri)}.pv-tot b{color:var(--pri)}
+.pv-tg span,.pv-tg span.b{background:color-mix(in srgb,var(--pri) 9%,var(--card));color:var(--pri)}
+.pv-act .e{background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri);border-color:color-mix(in srgb,var(--pri) 30%,var(--bd))}
+.lbm{background:var(--card);border:1px solid var(--bd)}
+.g>div[style*="cursor:pointer"]~.k3:last-child:nth-child(even){grid-column:1/-1}
+.row b{font-size:17px;margin-top:0}
+header{gap:4px}header .ib{padding:7px}
+.bar .btn:not(.g2){background:var(--pri)!important}
+/* রিপোর্ট */
+.rpnav{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:6px}
+.rpnav b{font-family:var(--tiro);font-size:16px;text-align:center;flex:1;font-weight:400;color:var(--pri)}
+.rpnav button{width:42px;height:42px;border-radius:14px;border:0;background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri);font-size:22px;cursor:pointer}
+.rpf{margin-top:12px;border-radius:24px;padding:18px;background:linear-gradient(135deg,var(--hd),color-mix(in srgb,var(--hd) 62%,#2b8f6b));color:#f6ebd0;box-shadow:0 14px 30px color-mix(in srgb,var(--hd) 40%,transparent);position:relative;overflow:hidden}
+.rpf::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,#e3c37a,transparent)}
+.rpf>span{font-size:15px;color:#e9dfc4}.rpf i{font-style:normal;font-size:11px;background:rgba(243,213,140,.2);color:#f3d58c;border-radius:99px;padding:1px 8px;margin-left:6px}
+.rpf>b{display:block;font-family:var(--tiro);font-weight:400;font-size:38px;color:#f3d58c;margin:6px 0 2px}
+.rpf small{display:block;color:#e9dfc4}.rpf .rpd{margin-top:6px;font-weight:600;color:#f3d58c}
+.k3 .k3v.G{color:var(--grn)}.k3 .k3v.R{color:var(--red)}.k3 .k3v.A{color:var(--amb)}
+.rpt{font-family:var(--tiro);font-size:16px;font-weight:400}
+.rpleg{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:4px}.rpleg i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-left:6px}
+.rpch{display:flex;gap:4px;align-items:flex-end;margin-top:14px}.rpch.dense{gap:2px}
+.rpb{flex:1;min-width:0;cursor:pointer;text-align:center}.rpb span{display:block;font-size:10px;color:var(--mut);margin-top:4px;height:14px;white-space:nowrap}
+.rpbars{height:120px;display:flex;align-items:flex-end;justify-content:center;gap:2px}
+.rpbars i{display:block;flex:1;max-width:14px;border-radius:5px 5px 0 0;min-height:0}.rpbars .rbs{background:var(--pri)}.rpbars .rbp{background:var(--gold)}
+.rpch.dense .rpbars{gap:0}.rpch.dense .rpbars i{max-width:6px;border-radius:3px 3px 0 0}
+.rpbar{height:7px;border-radius:9px;background:var(--bd);margin-top:5px;overflow:hidden}.rpbar i{display:block;height:100%;border-radius:9px;background:var(--red)}
+@media print{header,nav{display:none!important}}
+
+</style>
 </head>
 <body>
 <header><button class="ib" onclick="drawer(1)">☰</button><h1 id="ttl"></h1><small id="vtag" style="color:var(--mut);font-size:10px"></small><button class="ib" onclick="go('help')">▶️</button><button class="ib" onclick="toast('ডাটা এই ফোনেই সংরক্ষিত ☁')">☁️</button><button class="ib" onclick="theme()">🌓</button><button class="ib" onclick="bell()" style="position:relative">🔔<b id="bg"></b></button><button class="ib" onclick="go('set')"><span class="av" id="av">M</span></button></header>
@@ -141,7 +338,7 @@ var cogs=function(s){return sum(s.items,function(i){return i.c*i.q})};
 var val=function(id){return document.getElementById(id).value};
 function seed(){return {shop:'আরাফাত শপ',uname:'আরাফাত শপ',products:[],customers:[],sales:[],expenses:[],nid:1}}
 function load(){var d=null;try{var x=localStorage.getItem('ad_v1');if(x)d=JSON.parse(x)}catch(e){}if(!d||!d.products)return seed();
-if(d.shop=='আমারদোকান')d.shop='আরাফাত শপ';if(!d.uname)d.uname='আরাফাত শপ';
+d.shop='আরাফাত শপ';if(!d.uname)d.uname='আরাফাত শপ';
 var demo=d.products.length==10&&d.products[0].name=='ঈমান সবার আগে'&&!(d.sales||[]).length&&!(d.expenses||[]).length&&!(d.purs||[]).length&&(d.customers||[]).length==1&&d.customers[0].name=='ইউ নাইম';
 if(demo){d.products=[];d.customers=[]}
 return d}
@@ -291,7 +488,7 @@ var HS={rep:['chart',function(){return 'দৈনিক, সাপ্তাহ�
 function hero(){var h=HS[view];if(!h)return '';return '<div class="hero"><span class="hi">'+IC(h[0],28)+'</span><span><b>'+Lg(T[view][0])+'</b><small>'+h[1]()+'</small></span></div>'}
 function delSale(id){var s=SA(id);if(!s)return;modal('<h3>মেমো মুছবেন?</h3><div class="row"><b>'+invNo(s)+'</b><b>'+money(s.total)+'</b></div><small style="color:var(--mut);display:block;margin-top:8px;line-height:1.5">মেমোটি মুছলে বিক্রিত পণ্যের স্টক ফিরে আসবে'+(s.cu&&sdue(s)>0?' আর কাস্টমারের বাকি '+money(sdue(s))+' কমে যাবে':'')+'। এটা আর ফেরানো যাবে না।</small><div style="display:flex;gap:10px;margin-top:16px"><button class="btn o" style="flex:1" onclick="modal(0)">বাতিল</button><button class="btn" style="flex:1;background:#e11d48" onclick="doDelSale('+id+')">'+IC('trash',16)+' মুছুন</button></div>')}
 function doDelSale(id){var s=SA(id);if(!s)return;s.items.forEach(function(i){var p=S.products.filter(function(x){return x.name==i.n})[0];if(p)p.stock+=i.q});if(s.cu){var c=CU(s.cu);if(c)c.due=Math.max(0,c.due-sdue(s))}S.sales=S.sales.filter(function(x){return x.id!=id});save();modal(0);toast('মেমো মুছে গেছে, স্টক ফিরেছে');render()}
-var MENU=[['মূল কার্যক্রম','#3b82f6',[['dash','grid','ড্যাশবোর্ড','#4f46e5'],['pos','cart','POS / বিক্রয়','#4f46e5'],['sales','receipt','ক্যাশ মেমো','#059669'],['','fileText','কোটেশন','#0891b2',1],['ret','undo','বিক্রয় রিটার্ন','#e11d48']]],['ইনভেন্টরি ও ক্রয়','#8b5cf6',[['stock','package','সকল পণ্য','#2563eb'],['stm','boxes','স্টক ম্যানেজমেন্ট','#059669']]],['CRM ও অর্থায়ন','#f59e0b',[['baki','handcoins','বাকির খাতা','#d97706'],['cust','users','কাস্টমার','#2563eb'],['cf','banknote','ক্যাশ ফ্লো','#059669'],['exp','wallet','খরচ','#e11d48'],['sms','msgSq','SMS কেন্দ্র','#db2777']]],['অ্যাডমিন','#94a3b8',[['rep','chart','রিপোর্টস','#7c3aed'],['usr','userCog','ইউজার ম্যানেজমেন্ট','#ea580c'],['help','headset','কাস্টমার সাপোর্ট','#db2777'],['set','settings','সেটিংস','#64748b']]]];
+var MENU=[['মূল কার্যক্রম','#3b82f6',[['dash','grid','ড্যাশবোর্ড','#4f46e5'],['pos','cart','POS / বিক্রয়','#4f46e5'],['sales','receipt','ক্যাশ মেমো','#059669'],['ret','undo','বিক্রয় রিটার্ন','#e11d48']]],['ইনভেন্টরি ও ক্রয়','#8b5cf6',[['stock','package','সকল পণ্য','#2563eb'],['stm','boxes','স্টক ম্যানেজমেন্ট','#059669']]],['CRM ও অর্থায়ন','#f59e0b',[['baki','handcoins','বাকির খাতা','#d97706'],['cust','users','কাস্টমার','#2563eb'],['cf','banknote','ক্যাশ ফ্লো','#059669'],['exp','wallet','খরচ','#e11d48'],['sms','msgSq','SMS কেন্দ্র','#db2777']]],['অ্যাডমিন','#94a3b8',[['rep','chart','রিপোর্টস','#7c3aed'],['usr','userCog','ইউজার ম্যানেজমেন্ট','#ea580c'],['help','headset','কাস্টমার সাপোর্ট','#db2777'],['set','settings','সেটিংস','#64748b']]]];
 function dl(){var h='';MENU.forEach(function(g){var it=g[2].filter(function(x){return !mq||(x[2]+' '+Lg(x[2])).toLowerCase().indexOf(mq.toLowerCase())>-1});if(!it.length)return;
 h+='<div style="display:flex;align-items:center;gap:8px;margin:16px 8px 6px;color:var(--mut);font-weight:700;font-size:15px"><span style="width:9px;height:9px;border-radius:50%;background:var(--gold)"></span>'+g[0]+'<span style="flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)"></span></div>'+it.map(function(x){var lk=!x[0],on=x[0]==view,col='var(--pri)';
 return '<div onclick="'+(lk?'toast(\'শীঘ্রই আসছে\')':'go(\''+x[0]+'\')')+'" style="display:flex;align-items:center;gap:14px;padding:'+(on?'10px 14px':'8px 14px')+';border-radius:20px;margin:2px 0;cursor:pointer;position:relative;'+(on?'background:color-mix(in srgb,'+col+' 10%,var(--card));font-weight:700;':'')+'">'+(on?'<i style="position:absolute;left:-12px;top:12px;bottom:12px;width:4px;border-radius:0 4px 4px 0;background:'+col+'"></i>':'')+'<span style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;'+(on?'background:linear-gradient(135deg,'+col+',color-mix(in srgb,'+col+' 65%,#000));color:#fff;box-shadow:0 6px 14px color-mix(in srgb,'+col+' 40%,transparent)':'background:color-mix(in srgb,'+col+' 13%,var(--card));color:'+col)+'">'+IC(x[1],22)+'</span><span style="flex:1;font-size:17px">'+Lg(x[2])+'</span>'+(lk?'<span style="color:#f59e0b;display:flex">'+IC('lock',20)+'</span>':on?'<span style="width:9px;height:9px;border-radius:50%;background:'+col+'"></span>':'')+'</div>'}).join('')});return h||'<div class="em">কিছু পাওয়া যায়নি</div>'}
@@ -381,7 +578,7 @@ function addP(){modal('<h3>নতুন পণ্য</h3><label>নাম</label
 function saveP(){var n=val('pn').trim(),s=+val('ps');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}S.products.push({id:S.nid++,name:n,cat:val('pc')||'অন্যান্য',buy:+val('pb')||0,sell:s,stock:+val('pk')||0,barcode:val('pbc').trim()});save();modal(0);toast('পণ্য যোগ হয়েছে');render()}
 function restock(id){var p=P(id);modal('<h3>'+esc(p.name)+'</h3><label>কতটি স্টক যোগ হবে?</label><input id="rs" type="number" inputmode="numeric" value="1"><button class="btn" style="width:100%;margin-top:14px" onclick="P('+id+').stock+=Math.max(0,+val(\'rs\')||0);save();modal(0);render()">যোগ করুন</button>')}
 function fmtD(t){var d=new Date(t);return String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear()}
-function invNo(s){return ((S.inv&&S.inv.pre)||'INV-')+s.t.toString(36).toUpperCase().slice(-8)}
+function invNo(s){return ((S.inv&&S.inv.pre)||'INV-')+s.t.toString(36).toUpperCase().slice(-5)}
 function sdue(s){return Math.max(0,s.total-s.paid)}
 function sFil(){var Q=mq2.trim().toLowerCase();return S.sales.slice().reverse().filter(function(s){if(!inR(s.t,mfd))return false;var d=sdue(s);if(mst=='paid'&&d>0)return false;if(mst=='part'&&!(d>0&&s.paid>0))return false;if(mst=='due'&&!(d>0&&s.paid<=0))return false;if(Q){var c=s.cu?CU(s.cu):null;if((invNo(s)+' '+(c?c.name+' '+(c.phone||''):'')).toLowerCase().indexOf(Q)<0)return false}return true})}
 function sc(ic,c1,c2,col,v,t,x){return '<div class="sct"><div class="si">'+ic+'</div><div style="min-width:0"><b>'+v+'</b><small style="margin:0">'+t+(x||'')+'</small></div></div>'}
@@ -462,7 +659,7 @@ if(stab=='p')return h+'<div class="c"><b>👤 ইউজার প্রোফা
 +'<div class="c" style="margin-top:12px"><div class="row" style="border:0"><span><b>🔐 অ্যাপ লক</b><small style="color:var(--mut);display:block">অ্যাপ নতুন করে চালু হলে বা ৫ মিনিটের বেশি বাইরে থাকলে PIN দিতে হবে।</small></span>'+sw(!!S.pin,S.pin?'pinOff()':'pinOn()')+'</div></div>';
 if(stab=='f')return h+'<div class="c"><div class="row" style="border:0"><span><b>📦 স্টক সতর্কতা সীমা</b><small style="color:var(--mut);display:block">এর নিচে স্টক নামলে "স্টক ফুরিয়ে আসছে"-তে দেখাবে</small></span><input type="number" inputmode="numeric" style="width:76px;margin:0" value="'+LM()+'" onchange="S.low=Math.max(0,+this.value||0);save();hb()"></div></div><div class="c" style="margin-top:12px"><div class="row" style="border:0"><span><b>🤝 বাকিতে বিক্রি</b><small style="color:var(--mut);display:block">বন্ধ করলে POS-এ পুরো টাকা না নিয়ে বিক্রি হবে না</small></span>'+sw(!S.noCredit,'S.noCredit=!S.noCredit;save();render()')+'</div></div>'
 +''+prCard()+'<div class="c" style="margin-top:12px"><b>🔄 অ্যাপ ভার্সন: '+VER+'</b><small style="display:block;color:var(--mut)">পুরনো ভার্সন দেখালে চাপুন (আপনার ডাটা মুছবে না)</small><button class="btn" style="margin-top:8px" onclick="hardReload()">নতুন ভার্সন লোড করুন</button></div><div class="c" style="margin-top:12px"><b>💾 ডাটা</b><small style="display:block;color:var(--mut)">ডাটা শুধু এই ফোনের ব্রাউজারে থাকে, নিয়মিত ব্যাকআপ নিন</small><button class="btn" style="margin:8px 8px 0 0" onclick="backup()">⬇ ব্যাকআপ</button><label class="btn o" style="display:inline-block;margin:8px 0 0">⬆ রিস্টোর<input type="file" accept=".json" hidden onchange="restore(this.files[0])"></label><br><button class="btn" style="background:var(--red);margin-top:12px" onclick="if(confirm(\'সব ডাটা মুছে যাবে। নিশ্চিত?\')){S=seed();save();render()}">সব ডাটা মুছুন</button></div>';
-return h+'<div class="c"><b>🧾 ইনভয়েস সেটআপ</b><small style="display:block;color:var(--mut)">ক্যাশ মেমোর উপরে-নিচে যা দেখাবে</small><label>দোকানের নাম</label><input value="'+esc(S.shop)+'" onchange="S.shop=this.value;save();render()"><label>ঠিকানা</label><input value="'+esc(v.addr||'')+'" onchange="inv(\'addr\',this.value)"><label>ফোন</label><input type="tel" value="'+esc(v.phone||'')+'" onchange="inv(\'phone\',this.value)"><label>মেমো নম্বরের শুরু (যেমন INV-)</label><input value="'+esc(v.pre||'')+'" onchange="inv(\'pre\',this.value)"><label>নিচের লেখা</label><input value="'+esc(v.note||'')+'" placeholder="ধন্যবাদ, আবার আসবেন" onchange="inv(\'note\',this.value)"></div><div class="em" style="padding:12px">মেমো দেখতে "ক্যাশ মেমো" তালিকায় যেকোনো বিক্রি চাপুন</div>'}
+return h+'<div class="c"><b>🧾 ইনভয়েস সেটআপ</b><small style="display:block;color:var(--mut)">ক্যাশ মেমোর উপরে-নিচে যা দেখাবে</small><label>দোকানের নাম 🔒</label><input value="'+esc(S.shop)+'" readonly style="opacity:.85"><label>ঠিকানা</label><input value="'+esc(v.addr||'')+'" onchange="inv(\'addr\',this.value)"><label>ফোন</label><input type="tel" value="'+esc(v.phone||'')+'" onchange="inv(\'phone\',this.value)"><label>মেমো নম্বরের শুরু (যেমন INV-)</label><input value="'+esc(v.pre||'')+'" onchange="inv(\'pre\',this.value)"><label>নিচের লেখা</label><input value="'+esc(v.note||'')+'" placeholder="ধন্যবাদ, আবার আসবেন" onchange="inv(\'note\',this.value)"></div><div class="em" style="padding:12px">মেমো দেখতে "ক্যাশ মেমো" তালিকায় যেকোনো বিক্রি চাপুন</div>'}
 function SA(id){return S.sales.filter(function(x){return x.id==id})[0]}
 function dt(t){return new Date(t).toLocaleDateString('bn-BD',{day:'numeric',month:'short'})}
 function tabs(arr,cur,v){return '<div class="chips">'+arr.map(function(x){return '<button class="chip '+(cur==x[0]?'on':'')+'" onclick="'+v+'=\''+x[0]+'\';render()">'+x[1]+'</button>'}).join('')+'</div>'}
@@ -557,74 +754,7 @@ S=load();save();render();lock();chkUpd();
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(function(){});
 </script>
-<style id="pv21">
-#lblp{display:none}
-.pv-hd{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 10%,var(--card)),color-mix(in srgb,var(--ac2) 8%,var(--card)));border:1px solid var(--bd);border-radius:28px;padding:18px;box-shadow:0 8px 24px #5b3df51a}
-.pv-t{display:flex;align-items:center;gap:10px;justify-content:space-between}
-.pv-t h2{margin:0;border:0;padding:0;font-size:26px;font-weight:700;display:flex;align-items:center;gap:10px;color:var(--tx)}
-.pv-t h2 svg{color:#2f6bff}
-.pv-pill{border:1px solid var(--bd);background:var(--card);border-radius:99px;padding:8px 14px;font-family:inherit;font-size:14px;font-weight:600;color:var(--pri);display:flex;gap:6px;align-items:center;cursor:pointer}
-.pv-add{width:100%;margin-top:14px;border:0;border-radius:20px;padding:16px;background:linear-gradient(90deg,#2563ff,#7a2cf5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 24px #5b3df566;cursor:pointer}
-.pv-add i{width:42px;height:42px;border-radius:13px;background:#ffffff33;display:flex;align-items:center;justify-content:center}
-.pv-box{margin-top:16px;background:color-mix(in srgb,var(--card) 90%,transparent);border:1px solid var(--bd);border-radius:28px;padding:16px}
-.pv-s{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);background:var(--card);border-radius:18px;padding:0 14px;box-shadow:0 2px 8px #0000000d}
-.pv-s input{border:0;margin:0;background:none;padding:14px 0;outline:0}
-.pv-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.pv-g select,.pv-g button{margin:0;border-radius:18px;padding:14px;font-size:16px;font-weight:500;box-shadow:0 2px 8px #0000000d}
-.pv-g button{border:1px solid var(--bd);background:var(--card);color:var(--tx);font-family:inherit;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
-.pv-g button.on{background:color-mix(in srgb,var(--red) 12%,var(--card));color:var(--red)}
-.pv-tot{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 10%,var(--card));border-radius:18px;display:flex;align-items:center;justify-content:center;gap:8px;color:#2563eb;font-size:15px}
-.pv-tot b{font-size:20px;color:#1d4ed8}
-.pv-sa{display:flex;align-items:center;gap:14px;padding:14px 4px;margin-top:14px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);font-weight:700;font-size:18px;cursor:pointer}
-.pv-ck{width:34px;height:34px;border-radius:50%;border:3px solid var(--bd);flex:none;background:var(--card);display:flex;align-items:center;justify-content:center;color:#fff}
-.pv-ck.on{background:#2f6bff;border-color:#2f6bff}
-.pv-c{margin-top:16px;background:var(--card);border:1px solid var(--bd);border-radius:28px;padding:16px;box-shadow:0 6px 18px #0000000f}
-.pv-c.off{opacity:.65}
-.pv-h{display:flex;align-items:center;gap:12px}
-.pv-h b{font-size:21px;flex:1;line-height:1.25}
-.pv-stp{background:#fdf0bf;color:#b45309;border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px;white-space:nowrap}
-.pv-stp.ok{background:#d9f7e8;color:#067a53}.pv-stp.z{background:#fde0e4;color:#c9243b}
-.pv-tg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.pv-tg span,.pv-tg button{border:1px solid var(--bd);background:color-mix(in srgb,#3b82f6 9%,var(--card));color:#2457d6;border-radius:99px;padding:6px 14px;font-family:inherit;font-size:14px;display:flex;align-items:center;gap:6px}
-.pv-tg span.b{background:color-mix(in srgb,#8b5cf6 12%,var(--card));color:#5b3df5}
-.pv-tg button{background:var(--card);color:var(--tx);font-weight:600;cursor:pointer}
-.pv-pr{display:grid;grid-template-columns:1fr 1fr;margin-top:16px;border:1px solid var(--bd);background:var(--bg);border-radius:20px;padding:16px}
-.pv-pr div+div{border-left:1px solid var(--bd);padding-left:18px}
-.pv-pr small{color:var(--mut);font-size:15px}.pv-pr b{display:block;font-size:26px;margin-top:4px}
-.pv-bar{display:flex;justify-content:space-between;margin-top:18px;color:var(--mut);font-size:15px}
-.pv-bar+div{height:10px;border-radius:9px;background:var(--bd);margin-top:8px;overflow:hidden}.pv-bar+div i{display:block;height:100%;border-radius:9px;background:#f59e0b}
-.pv-act{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
-.pv-act button{border:1px solid var(--bd);background:var(--bg);border-radius:18px;padding:14px 4px;font-family:inherit;font-weight:700;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mut);cursor:pointer}
-.pv-act .g{background:color-mix(in srgb,var(--grn) 12%,var(--card));color:var(--grn);border-color:color-mix(in srgb,var(--grn) 30%,var(--bd))}
-.pv-act .e{background:color-mix(in srgb,#3b82f6 10%,var(--card));color:#2563eb;border-color:color-mix(in srgb,#3b82f6 30%,var(--bd))}
-.lbo{position:fixed;inset:0;z-index:40;background:#3a3f5a88;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:14px}
-.lbm{width:100%;max-width:460px;max-height:94%;display:flex;flex-direction:column;background:color-mix(in srgb,var(--card) 88%,#c9c3f5);border:1px solid #fff6;border-radius:30px;padding:22px 20px 18px;box-shadow:0 24px 60px #0005}
-.lbm h3{margin:0;font-size:23px}
-.lbx{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--bd)}
-.lbx button{border:0;background:none;color:var(--tx);cursor:pointer}
-.lbb{overflow:auto;flex:1;padding:14px 4px 6px}
-.lbr{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;font-weight:600;margin:6px 0}
-.lbv{background:var(--bg);border-radius:22px;padding:14px;display:flex;justify-content:center}
-.lbp{background:#fff;color:#000;border-radius:16px;box-shadow:0 4px 14px #0002;overflow:hidden}
-.lbn{color:var(--mut);font-size:13px;text-align:center;margin:10px 0}
-.lbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
-.lbs button,.lbd button{border:2px solid transparent;background:color-mix(in srgb,var(--bd) 60%,var(--card));border-radius:18px;padding:14px 2px;font-family:inherit;font-weight:700;font-size:15px;color:var(--tx);cursor:pointer}
-.lbs button.on,.lbd button.on{border-color:#2f7bff;color:#2f5be0;background:color-mix(in srgb,#3b82f6 10%,var(--card))}
-.lbs .w{grid-column:span 2}
-.lbc{display:flex;align-items:center;gap:8px;margin-top:10px}
-.lbc input{margin:0;text-align:center;border-radius:20px;padding:12px 4px;width:78px}
-.lbd{display:flex;align-items:center;gap:10px;margin-top:12px}.lbd button{padding:14px 20px}
-.lbt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
-.lbt b{display:block;font-size:15px}.lbt small{color:var(--mut)}
-.lbg{width:60px;height:34px;border-radius:99px;background:#cfd6e4;position:relative;border:0;flex:none;cursor:pointer}
-.lbg:after{content:"";position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.2s}
-.lbg.on{background:#2f7bff}.lbg.on:after{left:30px}
-.lbq{display:flex;align-items:center;gap:8px;margin-top:6px}
-.lbq button{width:46px;height:46px;border-radius:50%;border:1px solid var(--bd);background:var(--card);font-size:22px;color:var(--tx);cursor:pointer}
-.lbq input{margin:0;width:100px;text-align:center;font-size:22px;font-weight:700;border-radius:20px}
-.lbgo{margin-top:12px;border:0;border-radius:20px;padding:17px;background:linear-gradient(90deg,#2f7bff,#5b3df5);color:#fff;font-family:inherit;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 24px #3b5bf566;cursor:pointer}
-@media print{body.lp>*:not(#lblp){display:none!important}body.lp #lblp{display:block}body.lp,html{background:#fff!important;padding:0!important}}
-</style>
+
 <script>
 (function(){
 var SV=function(p,z){return '<svg width="'+(z||22)+'" height="'+(z||22)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'};
@@ -722,11 +852,16 @@ function card(p){var z=p.stock<=0,lo=!z&&p.stock<=LM();return '<div class="pv-c'
 +'<div class="pv-bar"><span>স্টক স্ট্যাটাস</span><span>'+(z?'স্টক শেষ':lo?'স্বল্প স্টক':'পর্যাপ্ত স্টক')+'</span></div><div><i style="width:'+Math.max(3,Math.min(100,p.stock/12*100))+'%;background:'+(z?'#e5384f':lo?'#f59e0b':'#10b981')+'"></i></div>'
 +'<div class="pv-act"><button class="g" onclick="restock('+p.id+')">'+ic('pc',26)+'স্টক যোগ</button><button onclick="pvOff('+p.id+')">'+ic('eo',26)+(p.off?'Active':'Inactive')+'</button><button class="e" onclick="editP('+p.id+')">'+ic('ed',26)+'এডিট</button></div></div>'}
 function stock2(){var f=flt(),all=f.length&&f.every(function(p){return sel[p.id]});
-return '<div class="pv-hd"><div class="pv-t"><h2>'+ic('bx',34)+'Products</h2><span style="display:flex;gap:8px"><button class="pv-pill" onclick="document.getElementById(\'pvc\').focus()">'+ic('ls',18)+'ক্যাটাগরি</button><button class="pv-pill" onclick="document.getElementById(\'pvb\').focus()">'+ic('tg',18)+'ব্র্যান্ড</button></span></div><button class="pv-add" onclick="addP()"><i>'+ic('plus',26)+'</i>নতুন পণ্য যুক্ত করুন</button></div>'
+return '<div class="pv-hd"><div class="pv-t"><h2>'+ic('bx',34)+'Products</h2><span style="display:flex;gap:8px"><button class="pv-pill" onclick="sddT(\'pvc\')">'+ic('ls',18)+'ক্যাটাগরি</button><button class="pv-pill" onclick="sddT(\'pvb\')">'+ic('tg',18)+'ব্র্যান্ড</button></span></div><button class="pv-add" onclick="addP()"><i>'+ic('plus',26)+'</i>নতুন পণ্য যুক্ত করুন</button></div>'
 +'<div class="pv-box"><div class="pv-s">'+ic('search',26)+'<input id="pvq" placeholder="নাম বা বারকোড দিয়ে খুঁজুন..." value="'+esc(pq)+'" oninput="pvQ(this.value)"></div>'
-+'<div class="pv-g"><select id="pvc" onchange="pcat=this.value;pvR()">'+opts(uniq('cat'),pcat,'All Categories')+'</select><select id="pvb" onchange="pbr=this.value;pvR()">'+opts(uniq('brand'),pbr,'All Brands')+'</select>'
++'<div class="pv-g">'+sdd('pvc',uniq('cat'),pcat,'All Categories')+sdd('pvb',uniq('brand'),pbr,'All Brands')
 +'<button class="'+(pin?'on':'')+'" onclick="pin=!pin;pvR()">'+ic('eo',22)+'Inactive</button><div class="pv-tot">Total: <b>'+bn(f.length)+'</b></div></div>'
 +'<div class="pv-sa" onclick="pvAll()"><div class="pv-ck'+(all?' on':'')+'">'+(all?ic('ck',20):'')+'</div>সবগুলো সিলেক্ট করুন</div><div id="pvl">'+(f.length?f.map(card).join(''):'<div class="em">কোনো পণ্য নেই</div>')+'</div></div>'}
+function sdd(id,arr,val,all){var chev='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+return '<div class="sdd" id="'+id+'" data-all="'+esc(all)+'"><button type="button" class="sdd-b" onclick="sddT(\''+id+'\')"><span>'+esc(val||all)+'</span>'+chev+'</button><div class="sdd-m"><input type="search" placeholder="সার্চ করুন..." autocomplete="off" oninput="sddF(\''+id+'\',this.value)"><div class="sdd-l"><div data-v=""'+(val?'':' class="on"')+'>'+esc(all)+'</div>'+arr.map(function(x){return '<div data-v="'+esc(x)+'"'+(x==val?' class="on"':'')+'>'+esc(x)+'</div>'}).join('')+'<div class="sdd-no">কিছু পাওয়া যায়নি</div></div></div></div>'}
+window.sddT=function(id){var e=document.getElementById(id);if(!e)return;var was=e.classList.contains('open');document.querySelectorAll('.sdd.open').forEach(function(x){x.classList.remove('open')});if(!was){e.classList.add('open');var i=e.querySelector('input');i.value='';sddF(id,'');setTimeout(function(){i.focus()},30)}};
+window.sddF=function(id,q){var e=document.getElementById(id);q=(q||'').toLowerCase().trim();var n=0;e.querySelectorAll('.sdd-l div[data-v]').forEach(function(d){var show=!q||d.textContent.toLowerCase().indexOf(q)>=0;d.style.display=show?'':'none';if(show)n++});e.querySelector('.sdd-no').style.display=n?'none':'block'};
+if(!window._sddInit){window._sddInit=1;document.addEventListener('click',function(ev){var d=ev.target.closest&&ev.target.closest('.sdd-l div[data-v]');if(d){var w=d.closest('.sdd');if(w.id==='pvc')pcat=d.getAttribute('data-v');else pbr=d.getAttribute('data-v');pvR();return}if(!ev.target.closest||!ev.target.closest('.sdd'))document.querySelectorAll('.sdd.open').forEach(function(x){x.classList.remove('open')})})}
 window.pvR=function(){var m=document.getElementById('m');m.innerHTML=stock2();var e=document.getElementById('pvq');};
 window.pvQ=function(v){pq=v;var f=flt();document.getElementById('pvl').innerHTML=f.length?f.map(card).join(''):'<div class="em">কোনো পণ্য নেই</div>';document.querySelector('.pv-tot b').textContent=bn(f.length)};
 window.pvSel=function(id){sel[id]=!sel[id];pvR()};
@@ -744,119 +879,9 @@ window.saveEP=function(id){var b=document.getElementById('eb2');if(b)P(id).brand
 /* POS scan accepts auto SKU */
 window.scanAdd=function(c){c=String(c).trim();if(!c)return;var u=c.toUpperCase(),p=S.products.filter(function(x){return x.barcode==c||(!x.barcode&&sku(x)==u)})[0];if(!p){toast('এই বারকোডের পণ্য নেই');return}add(p.id);var e=document.getElementById('sc');if(e)e.textContent='🛒 '+bn(Object.keys(cart).length)+'টি পণ্য · '+money(ctotal());if(navigator.vibrate)navigator.vibrate(60)};
 render();
+requestAnimationFrame(function(){document.documentElement.classList.add('rdy')});
 })();
 </script>
-<style id="zahir-theme">
-/* ===== মাকতাবায়ে জহির: নতুন ডিজাইন (সবুজ · সোনালি · পার্চমেন্ট) ===== */
-:root{--ac:#0f5a43!important;--ac2:#b8893a!important;--gold:#c19a4b;--bg:#f6efe2;--card:#fffcf6;--tx:#16241d;--mut:#6c776d;--pri:#0f5a43;--grn:#0f8a5f;--red:#c0392b;--amb:#a97618;--bd:#e7dcc6;--hd:#0f4c3a;--tiro:'Tiro Bangla','Noto Serif Bengali','Hind Siliguri',serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}}
-:root[data-theme="dark"]{--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}
-:root[data-theme="light"]{--ac:#0f5a43!important;--ac2:#b8893a!important}
-html{background:var(--bg)!important;background-image:radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--pri) 9%,transparent) 1px,transparent 0)!important;background-size:22px 22px!important}
-body{background:transparent;padding-bottom:130px}
-h1,h2,h3{font-family:var(--tiro)}
-/* হেডার */
-header,body::before{background:var(--hd)!important}
-header{color:#f6ebd0;border-bottom:0;border-radius:0 0 26px 26px;padding:14px 14px 18px;margin-bottom:6px;box-shadow:0 12px 28px color-mix(in srgb,var(--hd) 45%,transparent)}
-header h1{font-family:var(--tiro);font-size:20px;color:#f6ebd0;letter-spacing:.2px}
-header .ib{color:#f6ebd0!important;background:rgba(255,255,255,.08)!important;border-radius:13px;padding:8px}
-header .ib:active{background:rgba(255,255,255,.18)!important}
-header #vtag{display:none}
-.av{background:linear-gradient(145deg,#e3c37a,#b8893a);color:#17261e;border-radius:50%}
-main{padding:12px 14px}
-/* হিরো */
-.hero{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-left:5px solid var(--gold);border-radius:20px;box-shadow:0 8px 22px rgba(70,50,15,.08);padding:14px 16px}
-.hero .hi{background:color-mix(in srgb,var(--gold) 20%,var(--card));color:var(--pri);border-radius:14px}
-.hero b{font-family:var(--tiro);font-size:21px;color:var(--pri)}
-.hero small{color:var(--mut)}
-/* শিরোনাম */
-h2{border:0!important;padding:0!important;font-size:19px;color:var(--pri)}
-main>h2{display:flex;align-items:center;gap:12px}
-main>h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
-.hs h2{font-size:19px}
-/* কার্ড */
-.c,.p{background:var(--card);border:1px solid var(--bd);border-radius:20px;box-shadow:0 6px 18px rgba(70,50,15,.06)}
-.row{border-bottom:1px dashed var(--bd)}
-.k3{border-radius:22px;padding:16px;position:relative;overflow:hidden}
-.k3::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
-.k3h{display:flex;align-items:center;gap:10px}
-.k3l{font-weight:600;font-size:15px;color:var(--mut)}
-.k3 .k3v{display:block;font-family:var(--tiro);font-size:30px;margin-top:14px;color:var(--tx);font-weight:400}
-.g>div[style*="cursor:pointer"]{grid-column:1/-1}
-.g>div[style*="cursor:pointer"]>.k3{background:linear-gradient(135deg,var(--hd),color-mix(in srgb,var(--hd) 62%,#2b8f6b));border:0;color:#f6ebd0;box-shadow:0 14px 30px color-mix(in srgb,var(--hd) 40%,transparent)}
-.g>div[style*="cursor:pointer"]>.k3::before{background:linear-gradient(90deg,#e3c37a,transparent)}
-.g>div[style*="cursor:pointer"]>.k3 .k3l,.g>div[style*="cursor:pointer"]>.k3 small{color:#e9dfc4}
-.g>div[style*="cursor:pointer"]>.k3 .k3v{color:#f3d58c;font-size:36px}
-.g>div[style*="cursor:pointer"]>.k3 .k3h>span:first-child{background:rgba(255,255,255,.14)!important;color:#f3d58c!important}
-.sct{display:flex;align-items:center;gap:12px;border-radius:18px;padding:12px;border:1px solid var(--bd);background:var(--card);border-left:4px solid var(--gold)}
-.sct .si{width:46px;height:46px;border-radius:14px;background:color-mix(in srgb,var(--pri) 12%,var(--card));color:var(--pri);display:flex;align-items:center;justify-content:center;flex:none}
-.sct b{font-family:var(--tiro);font-size:21px;font-weight:400;display:block}
-/* দ্রুত কাজ */
-.qa{background:var(--card)!important;border:1px solid var(--bd)!important;color:var(--tx)!important;border-radius:20px;flex-direction:column;align-items:flex-start;gap:12px;padding:14px;box-shadow:0 6px 16px rgba(70,50,15,.06)}
-.qa>span{background:var(--pri)!important;color:#f6ebd0!important;border-radius:14px!important;box-shadow:none!important}
-.qa:nth-child(even)>span{background:linear-gradient(145deg,#e3c37a,#b8893a)!important;color:#17261e!important}
-/* বোতাম */
-.btn{background:var(--pri);color:#f6ebd0;border-radius:14px;box-shadow:0 6px 14px color-mix(in srgb,var(--pri) 28%,transparent);font-weight:600}
-.btn.g2{background:linear-gradient(145deg,#d9b565,#b8893a);color:#17261e}
-.btn.o{background:transparent;color:var(--pri);border:1.5px solid color-mix(in srgb,var(--pri) 55%,var(--bd));box-shadow:none}
-.chip{border-radius:12px;background:var(--card)}
-.chip.on{background:var(--pri);color:#f6ebd0;border-color:var(--pri)}
-.tg.on{background:var(--pri);color:#f6ebd0}
-.lk{color:var(--pri);border-color:var(--bd)}
-input,select,textarea{background:var(--card);border:1.5px solid var(--bd);border-radius:14px}
-input:focus,select:focus,textarea:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 18%,transparent)}
-.iw,.iw2{background:var(--card);border-color:var(--bd)}
-/* নিচের মেনু */
-nav{left:0;right:0;bottom:0;background:var(--hd)!important;border:0;border-radius:24px 24px 0 0;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -12px 30px rgba(0,0,0,.2)}
-nav button{color:rgba(246,235,208,.62)}
-nav button .ic{width:48px;height:32px;border-radius:12px}
-nav button.on{color:#f3d58c}
-nav button.on .ic{background:rgba(243,213,140,.16)!important;color:#f3d58c!important;box-shadow:none!important}
-nav .pos{color:#f3d58c}
-nav .pos .ic,nav .pos.on .ic{width:58px;height:58px;border-radius:50%;margin-top:-30px;background:linear-gradient(145deg,#e3c37a,#b8893a)!important;color:#17261e!important;border:4px solid var(--bg);box-shadow:0 10px 22px rgba(120,85,20,.4)!important}
-.bar{bottom:calc(78px + env(safe-area-inset-bottom,0px))}
-#toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));background:var(--hd);color:#f6ebd0;border:1px solid rgba(193,154,75,.55)}
-/* শিট, ড্রয়ার */
-.ov{background:rgba(10,30,22,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.sh{border-radius:28px 28px 0 0;border-top:3px solid var(--gold)}
-.sh h3{font-family:var(--tiro);font-size:21px;color:var(--pri);margin-top:2px}
-.dr{background:var(--card);border-right:3px solid var(--gold);border-radius:0 28px 28px 0}
-.fbar{background:var(--hd)}
-.fbw,.ps{border-top:3px solid var(--gold)}
-/* পণ্য/ক্রেতা পাতার পুরনো নীল-বেগুনি রং */
-.pv-hd{background:var(--card);box-shadow:0 8px 22px rgba(70,50,15,.07)}
-.pv-t h2 svg{color:var(--gold)}
-.pv-add{background:var(--pri);box-shadow:0 10px 22px color-mix(in srgb,var(--pri) 35%,transparent)}
-.pv-pill{color:var(--pri)}
-.pv-ck.on{background:var(--pri);border-color:var(--pri)}
-.pv-tot{background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri)}.pv-tot b{color:var(--pri)}
-.pv-tg span,.pv-tg span.b{background:color-mix(in srgb,var(--pri) 9%,var(--card));color:var(--pri)}
-.pv-act .e{background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri);border-color:color-mix(in srgb,var(--pri) 30%,var(--bd))}
-.lbm{background:var(--card);border:1px solid var(--bd)}
-.g>div[style*="cursor:pointer"]~.k3:last-child:nth-child(even){grid-column:1/-1}
-.row b{font-size:17px;margin-top:0}
-header{gap:4px}header .ib{padding:7px}
-.bar .btn:not(.g2){background:var(--pri)!important}
-/* রিপোর্ট */
-.rpnav{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:6px}
-.rpnav b{font-family:var(--tiro);font-size:16px;text-align:center;flex:1;font-weight:400;color:var(--pri)}
-.rpnav button{width:42px;height:42px;border-radius:14px;border:0;background:color-mix(in srgb,var(--pri) 10%,var(--card));color:var(--pri);font-size:22px;cursor:pointer}
-.rpf{margin-top:12px;border-radius:24px;padding:18px;background:linear-gradient(135deg,var(--hd),color-mix(in srgb,var(--hd) 62%,#2b8f6b));color:#f6ebd0;box-shadow:0 14px 30px color-mix(in srgb,var(--hd) 40%,transparent);position:relative;overflow:hidden}
-.rpf::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,#e3c37a,transparent)}
-.rpf>span{font-size:15px;color:#e9dfc4}.rpf i{font-style:normal;font-size:11px;background:rgba(243,213,140,.2);color:#f3d58c;border-radius:99px;padding:1px 8px;margin-left:6px}
-.rpf>b{display:block;font-family:var(--tiro);font-weight:400;font-size:38px;color:#f3d58c;margin:6px 0 2px}
-.rpf small{display:block;color:#e9dfc4}.rpf .rpd{margin-top:6px;font-weight:600;color:#f3d58c}
-.k3 .k3v.G{color:var(--grn)}.k3 .k3v.R{color:var(--red)}.k3 .k3v.A{color:var(--amb)}
-.rpt{font-family:var(--tiro);font-size:16px;font-weight:400}
-.rpleg{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:4px}.rpleg i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-left:6px}
-.rpch{display:flex;gap:4px;align-items:flex-end;margin-top:14px}.rpch.dense{gap:2px}
-.rpb{flex:1;min-width:0;cursor:pointer;text-align:center}.rpb span{display:block;font-size:10px;color:var(--mut);margin-top:4px;height:14px;white-space:nowrap}
-.rpbars{height:120px;display:flex;align-items:flex-end;justify-content:center;gap:2px}
-.rpbars i{display:block;flex:1;max-width:14px;border-radius:5px 5px 0 0;min-height:0}.rpbars .rbs{background:var(--pri)}.rpbars .rbp{background:var(--gold)}
-.rpch.dense .rpbars{gap:0}.rpch.dense .rpbars i{max-width:6px;border-radius:3px 3px 0 0}
-.rpbar{height:7px;border-radius:9px;background:var(--bd);margin-top:5px;overflow:hidden}.rpbar i{display:block;height:100%;border-radius:9px;background:var(--red)}
-@media print{header,nav{display:none!important}}
 
-</style>
 </body>
 </html>
