@@ -37,8 +37,10 @@ h2{border-left-color:var(--ac)}
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f4c3a">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="আরাফাত শপ">
 <link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <style>
 :root{--bg:#f1f4fb;--card:#fff;--tx:#14182b;--mut:#6b7390;--pri:#5b3df5;--grn:#0a9e6e;--red:#e5384f;--amb:#d98200;--bd:#e3e7f3;--hd:#f8f9fe;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -204,7 +206,7 @@ textarea{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--
 .sdd-l .sdd-no{display:none;color:var(--mut);text-align:center;cursor:default}
 </style>
 <style id="zahir-theme">
-/* ===== মাকতাবায়ে জহির: নতুন ডিজাইন (সবুজ · সোনালি · পার্চমেন্ট) ===== */
+/* ===== আরাফাত শপ: নতুন ডিজাইন (সবুজ · সোনালি · পার্চমেন্ট) ===== */
 :root{--ac:#0f5a43!important;--ac2:#b8893a!important;--gold:#c19a4b;--bg:#f6efe2;--card:#fffcf6;--tx:#16241d;--mut:#6c776d;--pri:#0f5a43;--grn:#0f8a5f;--red:#c0392b;--amb:#a97618;--bd:#e7dcc6;--hd:#0f4c3a;--tiro:'Tiro Bangla','Noto Serif Bengali','Hind Siliguri',serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}}
 :root[data-theme="dark"]{--ac:#4cc79a!important;--ac2:#d9b565!important;--gold:#d9b565;--bg:#0b1612;--card:#13231c;--tx:#f1ebdc;--mut:#9db0a4;--pri:#4cc79a;--grn:#3fd6a0;--red:#ff8a7a;--amb:#e0b25a;--bd:#25392f;--hd:#08201a}
@@ -403,7 +405,7 @@ var cogs=function(s){return sum(s.items,function(i){return i.c*i.q})};
 var val=function(id){return document.getElementById(id).value};
 function seed(){return {shop:'আরাফাত শপ',uname:'আরাফাত শপ',products:[],customers:[],sales:[],expenses:[],nid:1}}
 function load(){var d=null;try{var x=localStorage.getItem('ad_v1');if(x)d=JSON.parse(x)}catch(e){}if(!d||!d.products)return seed();
-d.shop='আরাফাত শপ';if(!d.uname)d.uname='আরাফাত শপ';
+d.shop='আরাফাত শপ';if(!d.uname||/মাকতাবা|জহির/.test(d.uname))d.uname='আরাফাত শপ';
 var demo=d.products.length==10&&d.products[0].name=='ঈমান সবার আগে'&&!(d.sales||[]).length&&!(d.expenses||[]).length&&!(d.purs||[]).length&&(d.customers||[]).length==1&&d.customers[0].name=='ইউ নাইম';
 if(demo){d.products=[];d.customers=[]}
 return d}
@@ -422,7 +424,7 @@ navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(fun
 function editP(id){var p=P(id);modal('<h3>পণ্য সম্পাদনা</h3><label>নাম</label><input id="en1" value="'+esc(p.name)+'"><label>ক্যাটাগরি</label><input id="ec1" value="'+esc(p.cat)+'"><label>ক্রয়মূল্য</label><input id="eb1" type="number" inputmode="numeric" value="'+p.buy+'"><label>বিক্রয়মূল্য</label><input id="es1" type="number" inputmode="numeric" value="'+p.sell+'"><label>বারকোড</label><input id="ek1" value="'+esc(p.barcode||'')+'"><div style="display:flex;gap:8px;margin-top:14px"><button class="btn o" style="color:var(--red)" onclick="delP('+id+')">মুছুন</button><button class="btn" style="flex:1" onclick="saveEP('+id+')">সংরক্ষণ</button></div>')}
 function saveEP(id){var p=P(id),n=val('en1').trim(),s=+val('es1');if(!n||!s){toast('নাম ও বিক্রয়মূল্য দিন');return}p.name=n;p.cat=val('ec1')||'অন্যান্য';p.buy=+val('eb1')||0;p.sell=s;p.barcode=val('ek1').trim();save();modal(0);toast('সংরক্ষিত ✓');render()}
 function delP(id){if(confirm('পণ্যটি মুছবেন? আগের বিক্রির হিসাব থাকবে।')){S.products=S.products.filter(function(p){return p.id!=id});delete cart[id];save();modal(0);render()}}
-var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v33',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
+var keepF=false,mst='all',mfd='today',mq2='',rcTab='p',paperOpen=false,rcId=0,VER='v35',pmOpen=false,ctype='cust',cph='',cnm='',cad='',cr={},cd={},cdisc=0,cpm='ক্যাশ',crec=0,csms=false,cnote='',payOpen=false;
 function lineT(id){var p=P(id),r=cr[id]!=null?cr[id]:p.sell;return r*(1-(cd[id]||0)/100)*cart[id]}
 function ctotal(){return Object.keys(cart).reduce(function(x,id){return x+lineT(id)},0)}
 function netT(){return Math.max(0,ctotal()-(+cdisc||0))}
